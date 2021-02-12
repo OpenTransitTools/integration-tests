@@ -1,0 +1,17 @@
+{
+    "name": "integration-tests",
+    "preferGlobal": true,
+    "version": "1.0.0",
+    "author": "Frank Purcell <fxpurcell@gmail.com>",
+    "description": "script to install and run Selenium via cmd-line",
+    "license": "MPL-2.0",
+    "engines": {
+        "node": ">=10.0"
+    },
+    "dependencies": {
+        "selenium-side-runner": ">=0.1",
+        "chromedriver": ">=0.1",
+        "geckodriver": ">=0.1",
+        "edgedriver": ">=0.1"
+    }
+}
