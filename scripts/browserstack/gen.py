@@ -1,20 +1,27 @@
 import os
 import sys
 
+# https://www.browserstack.com/automate/capabilities
+# https://www.browserstack.com/list-of-browsers-and-platforms/js_testing
+# https://www.browserstack.com/docs/automate/selenium/selenium-ide
+# 
+
 browsers = [
-  {'name': 'iPhone_7', 'browser': 'x', 'browserVersion': '', 'os': '', 'osVersion': '', 'res': '1024x768'},
-  {'name': 'iPhone_12', 'browser': 'x', 'browserVersion': '', 'os': '', 'osVersion': '', 'res': '1024x768'}
+  {'name': 'iPhone_8+Chrome', 'device': 'iPhone 8 Plus', 'browser': 'Chrome', 'browserVersion': 'latest', 'os': 'iOS', 'osVersion': '12', 'orientation': 'portrait'},
+  {'name': 'iPhone_8+Safari', 'device': 'iPhone 8 Plus', 'browser': 'Safari', 'browserVersion': 'latest', 'os': 'iOS', 'osVersion': '12', 'orientation': 'landscape'},
 ]
 
 bs_key = "your browserstack '<uname>:<key>' here" if len(sys.argv) < 2 else sys.argv[1]
 
 template = """ capabilities:
-     browserName: "{browser}"
-     browser_version: '{browserVersion}'
+     device: "{device}"
+     orientation: "{orientation}"
      os: "{os}"
      os_version: '{osVersion}'
-     resolution: '{res}'
+     browserName: "{browser}"
+     browser_version: '{browserVersion}'
      name: 'Selenium IDE automate test'
+     real_mobile: true
      browserstack.debug: true
      browserstack.console: "verbose"
      browserstack.networkLogs: true

@@ -17,7 +17,7 @@
       "id": "33accd87-7c49-4fbb-9e1b-6d86217afb7e",
       "comment": "",
       "command": "setWindowSize",
-      "target": "1500x1500",
+      "target": "500x500",
       "targets": [],
       "value": ""
     }, {
