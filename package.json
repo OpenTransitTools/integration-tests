@@ -12,6 +12,7 @@
         "selenium-side-runner": ">=0.1",
         "chromedriver": ">=0.1",
         "geckodriver": ">=0.1",
+        "msedgedriver": ">=0.1",
         "edgedriver": ">=0.1"
     }
 }
