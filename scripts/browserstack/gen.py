@@ -13,7 +13,7 @@ browsers = [
   {'name': 'iPhoneXSafariLand', 'device': 'iPhone X', 'browser': 'Safari', 'browserVersion': 'latest', 'os': 'iOS', 'osVersion': '11', 'orientation': 'landscape'},
 
   {'name': 'iPhone_11Chrome', 'device': 'iPhone 11 Pro Max', 'browser': 'Chrome', 'browserVersion': 'latest', 'os': 'iOS', 'osVersion': '13', 'orientation': 'portrait'},
-  {'name': 'iPhone_11Chrome', 'device': 'iPhone 11 Pro', 'browser': 'Safari', 'browserVersion': 'latest', 'os': 'iOS', 'osVersion': '13', 'orientation': 'portrait'},
+  {'name': 'iPhone_11Safari', 'device': 'iPhone 11 Pro', 'browser': 'Safari', 'browserVersion': 'latest', 'os': 'iOS', 'osVersion': '13', 'orientation': 'portrait'},
   
   {'name': 'iPhone_12+Safari', 'device': 'iPhone 12 Pro', 'browser': 'Safari', 'browserVersion': 'latest', 'os': 'iOS', 'osVersion': '14', 'orientation': 'portrait'},
   {'name': 'iPhone_12+Chrome', 'device': 'iPhone 12', 'browser': 'Chrome', 'browserVersion': 'latest', 'os': 'iOS', 'osVersion': '14', 'orientation': 'portrait'},  
