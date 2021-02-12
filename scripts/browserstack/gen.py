@@ -9,21 +9,30 @@ browsers = [
   {'name': 'iPhone_8+ChromePort', 'device': 'iPhone 8 Plus', 'browser': 'Chrome', 'browserVersion': 'latest', 'os': 'iOS', 'osVersion': '12', 'orientation': 'portrait'},
   {'name': 'iPhone_8+ChromeLand', 'device': 'iPhone 8 Plus', 'browser': 'Chrome', 'browserVersion': 'latest', 'os': 'iOS', 'osVersion': '12', 'orientation': 'landscape'},
 
+  {'name': 'iPhoneXChromePort', 'device': 'iPhone X', 'browser': 'Chrome', 'browserVersion': 'latest', 'os': 'iOS', 'osVersion': '11', 'orientation': 'portrait'},
+  {'name': 'iPhoneXSafariLand', 'device': 'iPhone X', 'browser': 'Safari', 'browserVersion': 'latest', 'os': 'iOS', 'osVersion': '11', 'orientation': 'landscape'},
+
+  {'name': 'iPhone_11Chrome', 'device': 'iPhone 11 Pro Max', 'browser': 'Chrome', 'browserVersion': 'latest', 'os': 'iOS', 'osVersion': '13', 'orientation': 'portrait'},
+  {'name': 'iPhone_11Chrome', 'device': 'iPhone 11 Pro', 'browser': 'Safari', 'browserVersion': 'latest', 'os': 'iOS', 'osVersion': '13', 'orientation': 'portrait'},
+  
   {'name': 'iPhone_12+Safari', 'device': 'iPhone 12 Pro', 'browser': 'Safari', 'browserVersion': 'latest', 'os': 'iOS', 'osVersion': '14', 'orientation': 'portrait'},
   {'name': 'iPhone_12+Chrome', 'device': 'iPhone 12', 'browser': 'Chrome', 'browserVersion': 'latest', 'os': 'iOS', 'osVersion': '14', 'orientation': 'portrait'},  
 
-  {'name': 'androidGalaxy8Chrome', 'device': 'Samsung Galaxy S8', 'browser': 'Chrome', 'browserVersion': 'latest', 'os': 'android', 'osVersion': '7', 'orientation': 'portrait'},
-  {'name': 'androidPixel4Chrome', 'device': 'Google Pixel 4', 'browser': 'Chrome', 'browserVersion': 'latest', 'os': 'android', 'osVersion': '10', 'orientation': 'portrait'},
-  {'name': 'androidMotoChrome', 'device': 'Motorola Moto G7 Play', 'browser': 'Chrome', 'browserVersion': 'latest', 'os': 'android', 'osVersion': '9', 'orientation': 'portrait'},
-  
+  {'name': 'androidGalaxy8Chrome', 'device': 'Samsung Galaxy S8 Plus', 'browser': 'Chrome', 'browserVersion': 'latest', 'os': 'android', 'osVersion': '9.0', 'orientation': 'portrait'},
+  {'name': 'androidPixel4Chrome', 'device': 'Google Pixel 4', 'browser': 'Chrome', 'browserVersion': 'latest', 'os': 'android', 'osVersion': '11.0', 'orientation': 'portrait'},
+  {'name': 'androidPixel4XLChrome', 'device': 'Google Pixel 4 XL', 'browser': 'Chrome', 'browserVersion': 'latest', 'os': 'android', 'osVersion': '10.0', 'orientation': 'landscape'},  
+  {'name': 'androidPixel5FF', 'device': 'Google Pixel 5', 'browser': 'Firefox', 'browserVersion': 'latest', 'os': 'android', 'osVersion': '11.0', 'orientation': 'portrait'},  
+  {'name': 'androidMotoChrome', 'device': 'Motorola Moto G7 Play', 'browser': 'Chrome', 'browserVersion': 'latest', 'os': 'android', 'osVersion': '9.0', 'orientation': 'portrait'},
+    
   {'name': 'iPad+SafariPort', 'device': 'iPad Pro 11 2018', 'browser': 'Safari', 'browserVersion': 'latest', 'os': 'iOS', 'osVersion': '12', 'orientation': 'portrait'},
   {'name': 'iPad+SafariLand', 'device': 'iPad Mini 2019', 'browser': 'Safari', 'browserVersion': 'latest', 'os': 'iOS', 'osVersion': '12', 'orientation': 'landscape'},  
 
-  {'name': 'androidGalaxyPadChromePort', 'device': 'Samsung Galaxy Tab S6', 'browser': 'Chrome', 'browserVersion': 'latest', 'os': 'android', 'osVersion': '9', 'orientation': 'portrait'},
-  {'name': 'androidGalaxyPadChromeLand', 'device': 'Samsung Galaxy Tab S4', 'browser': 'Chrome', 'browserVersion': 'latest', 'os': 'android', 'osVersion': '8.1', 'orientation': 'landscape'},
-
+  {'name': 'androidGalaxyTabChromePort', 'device': 'Samsung Galaxy Tab S6', 'browser': 'Chrome', 'browserVersion': 'latest', 'os': 'android', 'osVersion': '9.0', 'orientation': 'portrait'},
+  {'name': 'androidGalaxyTabFFLand', 'device': 'Samsung Galaxy Tab S6', 'browser': 'Firefox', 'browserVersion': 'latest', 'os': 'android', 'osVersion': '9.0', 'orientation': 'landscape'},
+  {'name': 'androidGalaxyTabUcPort', 'device': 'Samsung Galaxy Tab S6', 'browser': 'UC Browser', 'browserVersion': 'latest', 'os': 'android', 'osVersion': '9.0', 'orientation': 'portrait'},
+  {'name': 'androidGalaxyTabSamLand', 'device': 'Samsung Galaxy Tab S6', 'browser': 'Samsung Internet', 'browserVersion': 'latest', 'os': 'android', 'osVersion': '9.0', 'orientation': 'landscape'},
 ]
-
+  
 bs_key = "your browserstack '<uname>:<key>' here" if len(sys.argv) < 2 else sys.argv[1]
 
 template = """ capabilities:
@@ -34,7 +43,7 @@ template = """ capabilities:
      browserName: "{browser}"
      browser_version: '{browserVersion}'
      real_mobile: true
-     name: 'Selenium IDE tests'
+     name: '{browser} + {orientation}'
      build: "blah"
      browserstack.debug: true
      browserstack.console: "verbose"
