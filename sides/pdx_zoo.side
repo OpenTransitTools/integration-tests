@@ -1,0 +1,240 @@
+{
+  "id": "9868f181-779d-47d8-851c-fde807c584f5",
+  "version": "2.0",
+  "name": "tm",
+  "url": "https://beta.trimet.org",
+  "tests": [{
+    "id": "6c4790e7-1d7c-4785-87d6-fc189b11076e",
+    "name": "pdx-zoo",
+    "commands": [{
+      "id": "caa23393-13cf-4cac-b159-1f986174cf7f",
+      "comment": "",
+      "command": "open",
+      "target": "/home/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "54c14d08-cb32-491d-8547-8aab500556f4",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "400x600",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "4deea0ac-09ce-4f92-bac7-3c211b84f689",
+      "comment": "",
+      "command": "click",
+      "target": "css=.styled__Tab-sc-1jofsbs-2:nth-child(2) .styled__TripToolIcon-sc-1jofsbs-3",
+      "targets": [
+        ["css=.styled__Tab-sc-1jofsbs-2:nth-child(2) .styled__TripToolIcon-sc-1jofsbs-3", "css:finder"]
+      ],
+      "value": ""
+    }, {
+      "id": "be8242d1-10b8-4137-b8a0-516b52aad24f",
+      "comment": "",
+      "command": "click",
+      "target": "css=.styled__TripRequestRow-sc-1puqg0d-2:nth-child(1) .styled__EndpointInput-sc-1puqg0d-10",
+      "targets": [
+        ["css=.styled__TripRequestRow-sc-1puqg0d-2:nth-child(1) .styled__EndpointInput-sc-1puqg0d-10", "css:finder"],
+        ["xpath=//div[@id='gatsby-focus-wrapper']/div/main/div[2]/div[2]/div[3]/div/div/div/div[2]/div/div/div/div/div/button/div[2]/div[2]", "xpath:idRelative"],
+        ["xpath=//button/div[2]/div[2]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "d7548195-2787-46a7-97f8-2d945547c308",
+      "comment": "",
+      "command": "type",
+      "target": "css=.styled__Input-ixb7j8-6",
+      "targets": [
+        ["css=.styled__Input-ixb7j8-6", "css:finder"],
+        ["xpath=//input[@value='pdx']", "xpath:attributes"],
+        ["xpath=//div[@id='gatsby-focus-wrapper']/div/main/div[2]/div[2]/div[3]/div/div/div/div[2]/div/div/div[2]/div/span/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "pdx"
+    }, {
+      "id": "adfcb2a8-48fe-4591-8553-19aabaf5c99d",
+      "comment": "",
+      "command": "pause",
+      "target": "",
+      "targets": [],
+      "value": "4000"
+    }, {
+      "id": "293a301a-242f-4790-a891-3421b984b170",
+      "comment": "",
+      "command": "click",
+      "target": "css=a[class^='styled__MenuItemA']",
+      "targets": [
+        ["css=.styled__MenuItemLi-ixb7j8-11:nth-child(1) .styled__OptionContent-ixb7j8-14", "css:finder"],
+        ["xpath=//div[@id='gatsby-focus-wrapper']/div/main/div[2]/div[2]/div[3]/div/div/div/div[2]/div/div/div[2]/ul/li/a/div/div[2]", "xpath:idRelative"],
+        ["xpath=//a/div/div[2]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "f001279a-f8cb-4968-a9fa-03016bddf6c8",
+      "comment": "",
+      "command": "click",
+      "target": "css=a[class^='styled__MenuItemA']",
+      "targets": [
+        ["css=.styled__MenuItemLi-ixb7j8-11:nth-child(1) .styled__OptionContent-ixb7j8-14", "css:finder"],
+        ["xpath=//div[@id='gatsby-focus-wrapper']/div/main/div[2]/div[2]/div[3]/div/div/div/div[2]/div/div/div[2]/ul/li/a/div/div[2]", "xpath:idRelative"],
+        ["xpath=//a/div/div[2]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "029b4590-ad07-4957-bbca-02724bb587f5",
+      "comment": "",
+      "command": "pause",
+      "target": "",
+      "targets": [],
+      "value": "2000"
+    }, {
+      "id": "9eee20c1-0012-4316-a9aa-8b24d2aa7100",
+      "comment": "",
+      "command": "click",
+      "target": "css=.styled__TripRequestRow-sc-1puqg0d-2:nth-child(2) .styled__EndpointInput-sc-1puqg0d-10",
+      "targets": [
+        ["css=.styled__TripRequestRow-sc-1puqg0d-2:nth-child(2) .styled__EndpointInput-sc-1puqg0d-10", "css:finder"],
+        ["xpath=//div[@id='gatsby-focus-wrapper']/div/main/div[2]/div[2]/div[3]/div/div/div/div[2]/div/div/div/div/div[2]/button/div[2]/div[2]", "xpath:idRelative"],
+        ["xpath=//div[2]/button/div[2]/div[2]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "a0a192b3-cffe-4d7b-8131-b263faf79cff",
+      "comment": "",
+      "command": "type",
+      "target": "css=.styled__Input-ixb7j8-6",
+      "targets": [
+        ["css=.styled__Input-ixb7j8-6", "css:finder"],
+        ["xpath=//input[@value='zoo']", "xpath:attributes"],
+        ["xpath=//div[@id='gatsby-focus-wrapper']/div/main/div[2]/div[2]/div[3]/div/div/div/div[2]/div/div/div[2]/div/span/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "zoo"
+    }, {
+      "id": "6d10751d-53c8-4fd2-aa36-24a4d156c28e",
+      "comment": "",
+      "command": "pause",
+      "target": "",
+      "targets": [],
+      "value": "4000"
+    }, {
+      "id": "8772e227-08b4-46eb-86d0-2b8fad44746c",
+      "comment": "",
+      "command": "click",
+      "target": "css=a[class^='styled__MenuItemA']",
+      "targets": [
+        ["css=.styled__MenuItemLi-ixb7j8-11:nth-child(1) .styled__OptionContent-ixb7j8-14", "css:finder"],
+        ["xpath=//div[@id='gatsby-focus-wrapper']/div/main/div[2]/div[2]/div[3]/div/div/div/div[2]/div/div/div[2]/ul/li/a/div/div[2]", "xpath:idRelative"],
+        ["xpath=//a/div/div[2]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "2a2ba4ea-376b-4eb5-b50f-8de5a488c3c1",
+      "comment": "",
+      "command": "click",
+      "target": "css=a[class^='styled__MenuItemA']",
+      "targets": [
+        ["css=.styled__MenuItemLi-ixb7j8-11:nth-child(1) .styled__OptionContent-ixb7j8-14", "css:finder"],
+        ["xpath=//div[@id='gatsby-focus-wrapper']/div/main/div[2]/div[2]/div[3]/div/div/div/div[2]/div/div/div[2]/ul/li/a/div/div[2]", "xpath:idRelative"],
+        ["xpath=//a/div/div[2]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "8a4c9a30-ea81-4218-8f8e-a6ba19bc295b",
+      "comment": "",
+      "command": "pause",
+      "target": "",
+      "targets": [],
+      "value": "2000"
+    }, {
+      "id": "34e0702b-a0c2-448a-8dc7-88b56968b02e",
+      "comment": "",
+      "command": "click",
+      "target": "css=.styled__PlanTripButton-sc-1puqg0d-21",
+      "targets": [
+        ["css=.styled__PlanTripButton-sc-1puqg0d-21", "css:finder"],
+        ["xpath=//div[@id='gatsby-focus-wrapper']/div/main/div[2]/div[2]/div[3]/div/div/div/div[2]/div/div/div[3]/button", "xpath:idRelative"],
+        ["xpath=//div[3]/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Get Directions')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "bc06ea88-b317-4d91-9841-c297ca3bb089",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1200x1600",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "e872c18e-ee6f-4211-acd4-1a5f78ff1276",
+      "comment": "",
+      "command": "pause",
+      "target": "",
+      "targets": [],
+      "value": "2000"
+    }, {
+      "id": "29e6131d-8e13-46bd-87f1-5c0f247425c2",
+      "comment": "",
+      "command": "click",
+      "target": "css=.styled__HopCardTripActionRow-sc-13na3f2-7:nth-child(2) > .styled__HopCardTripActionColumn-sc-13na3f2-9:nth-child(2) > .Styled__ClearButton-sc-11h87si-0",
+      "targets": [
+        ["css=.styled__HopCardTripActionRow-sc-13na3f2-7:nth-child(2) > .styled__HopCardTripActionColumn-sc-13na3f2-9:nth-child(2) > .Styled__ClearButton-sc-11h87si-0", "css:finder"],
+        ["xpath=//div[@id='gatsby-focus-wrapper']/div/main/div[2]/div[2]/div[3]/div/div/div/div[2]/div[4]/div[2]/div[2]/button", "xpath:idRelative"],
+        ["xpath=//div[2]/div[2]/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Edit Trip')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "8b609d29-38e7-4e0f-9e5c-eab2922acbdd",
+      "comment": "",
+      "command": "click",
+      "target": "css=.styled__SwapIcon-sc-1puqg0d-13",
+      "targets": [
+        ["css=.styled__SwapIcon-sc-1puqg0d-13", "css:finder"]
+      ],
+      "value": ""
+    }, {
+      "id": "d5df9104-54e4-48b7-8586-f7c6289e4e68",
+      "comment": "",
+      "command": "click",
+      "target": "css=.styled__PlanTripButton-sc-1puqg0d-21",
+      "targets": [
+        ["css=.styled__PlanTripButton-sc-1puqg0d-21", "css:finder"],
+        ["xpath=//div[@id='gatsby-focus-wrapper']/div/main/div[2]/div[2]/div[3]/div/div/div/div[2]/div/div/div[3]/button", "xpath:idRelative"],
+        ["xpath=//div[3]/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Get Directions')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "8eec0653-f876-4623-8c46-2b7062e9781a",
+      "comment": "",
+      "command": "pause",
+      "target": "",
+      "targets": [],
+      "value": "2000"
+    }, {
+      "id": "35e2767b-cfc2-4897-87ef-1e4cada95a65",
+      "comment": "",
+      "command": "click",
+      "target": "css=.styled__HopCardTripActionColumn-sc-13na3f2-9:nth-child(1) > .Styled__ClearButton-sc-11h87si-0",
+      "targets": [
+        ["css=.styled__HopCardTripActionColumn-sc-13na3f2-9:nth-child(1) > .Styled__ClearButton-sc-11h87si-0", "css:finder"],
+        ["xpath=//div[@id='gatsby-focus-wrapper']/div/main/div[2]/div[2]/div[3]/div/div/div/div[2]/div[4]/div[2]/div/button", "xpath:idRelative"],
+        ["xpath=//div[4]/div[2]/div/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Print Trip')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }]
+  }],
+  "suites": [{
+    "id": "cc1dd303-cef4-4d43-9f70-2f4ac6affd79",
+    "name": "Default Suite",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": ["6c4790e7-1d7c-4785-87d6-fc189b11076e"]
+  }],
+  "urls": ["https://beta.trimet.org/"],
+  "plugins": []
+}
