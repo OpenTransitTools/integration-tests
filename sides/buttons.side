@@ -1,0 +1,131 @@
+{
+  "id": "508f2f30-5095-4b8d-98f4-4bd4c4099a7f",
+  "version": "2.0",
+  "name": "buttons",
+  "url": "https://beta.trimet.org",
+  "tests": [{
+    "id": "91fca515-3720-4dd0-b656-83f5499382bb",
+    "name": "buttons",
+    "commands": [{
+      "id": "7fa14cea-ec57-4dab-86d7-82fb51d77921",
+      "comment": "",
+      "command": "open",
+      "target": "/home/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "33accd87-7c49-4fbb-9e1b-6d86217afb7e",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1500x1500",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "4a885840-c858-4c1f-80d4-6dc2d6454c0a",
+      "comment": "",
+      "command": "click",
+      "target": "xpath=//button[@data-gtm='nav-menu-open-button']",
+      "targets": [
+        ["css=.styled__MenuIcon-sc-19bzpl7-10", "css:finder"]
+      ],
+      "value": ""
+    }, {
+      "id": "aaa522fa-8f13-4b26-a0e3-7bd93f404147",
+      "comment": "",
+      "command": "pause",
+      "target": "1000",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "56ab3102-1c08-4838-8a6e-2fde48137d34",
+      "comment": "",
+      "command": "click",
+      "target": "xpath=//button[@data-gtm='nav-menu-close-button']",
+      "targets": [
+        ["css=.styled__CloseIcon-sc-19bzpl7-11 > path:nth-child(1)", "css:finder"]
+      ],
+      "value": ""
+    }, {
+      "id": "0d794259-946b-495e-8386-bcc105a7a6c7",
+      "comment": "",
+      "command": "pause",
+      "target": "1000",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "5e63afb6-d286-4d77-af9d-400aeb91a6c0",
+      "comment": "",
+      "command": "click",
+      "target": "xpath=//button[@data-gtm='map-alerts-button']",
+      "targets": [
+        ["css=.styled__CloseIcon-sc-19bzpl7-11 > path:nth-child(1)", "css:finder"]
+      ],
+      "value": ""
+    }, {
+      "id": "6e5e38cd-df63-4c9d-9cdf-ba60cc0ad6a4",
+      "comment": "",
+      "command": "pause",
+      "target": "2000",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "e1be8ab0-b17c-4699-87ff-18898a372799",
+      "comment": "",
+      "command": "click",
+      "target": "css=.styled__CloseIcon-sc-7ty92d-4",
+      "targets": [
+        ["css=.styled__CloseIcon-sc-7ty92d-4", "css:finder"]
+      ],
+      "value": ""
+    }, {
+      "id": "b27f4bbb-3ac0-40e9-9696-7b882292742c",
+      "comment": "",
+      "command": "pause",
+      "target": "1000",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "e4768151-fe78-4168-ad0e-dacc49545678",
+      "comment": "",
+      "command": "click",
+      "target": "xpath=//button[@data-gtm='map-layers-button']",
+      "targets": [
+        ["css=.styled__CloseIcon-sc-19bzpl7-11 > path:nth-child(1)", "css:finder"]
+      ],
+      "value": ""
+    }, {
+      "id": "7f288d8b-565b-4206-bacf-de9de2d50344",
+      "comment": "",
+      "command": "pause",
+      "target": "1000",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "9e54f9bd-cf32-4db9-b83a-56d5356288fb",
+      "comment": "",
+      "command": "click",
+      "target": "css=button[class^='Styled__ClearButton'][aria-expanded='true']",
+      "targets": [
+        ["css=.styled__CloseIcon-sc-19bzpl7-11 > path:nth-child(1)", "css:finder"]
+      ],
+      "value": ""
+    }, {
+      "id": "d0b24e54-8ed7-4330-b3b7-0c119d022e95",
+      "comment": "",
+      "command": "pause",
+      "target": "2000",
+      "targets": [],
+      "value": ""
+    }]
+  }],
+  "suites": [{
+    "id": "e322aa98-437c-4cc8-8bfe-a11f6d0e444b",
+    "name": "Default Suite",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": ["91fca515-3720-4dd0-b656-83f5499382bb"]
+  }],
+  "urls": ["https://beta.trimet.org/"],
+  "plugins": []
+}
