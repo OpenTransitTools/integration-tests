@@ -351,6 +351,98 @@
       "targets": [],
       "value": ""
     }]
+  }, {
+    "id": "91fca515-3720-4dd0-b656-83f5499382dd",
+    "name": "buttons-random-windows",
+    "commands": [{
+      "id": "7fa14cea-ec57-4dab-86d7-82fb51d77921",
+      "comment": "",
+      "command": "open",
+      "target": "/home/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "33accd87-7c49-4fbb-9e1b-6d86217afb7e",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "500x700",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "4a885840-c858-4c1f-80d4-6dc2d6454c0a",
+      "comment": "",
+      "command": "click",
+      "target": "xpath=//button[@data-gtm='nav-menu-open-button']",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "56ab3102-1c08-4838-8a6e-2fde48137d34",
+      "comment": "",
+      "command": "click",
+      "target": "xpath=//button[@data-gtm='nav-menu-close-button']",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "5e63afb6-d286-4d77-af9d-400aeb91a6c0",
+      "comment": "",
+      "command": "click",
+      "target": "xpath=//button[@data-gtm='map-alerts-button']",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "e1be8ab0-b17c-4699-87ff-18898a372799",
+      "comment": "",
+      "command": "click",
+      "target": "css=.styled__CloseIcon-sc-7ty92d-4",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "e4768151-fe78-4168-ad0e-dacc49545678",
+      "comment": "",
+      "command": "click",
+      "target": "xpath=//button[@data-gtm='map-layers-button']",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "9e54f9bd-cf32-4db9-b83a-56d5356288fb",
+      "comment": "",
+      "command": "click",
+      "target": "css=button[class^='Styled__ClearButton']",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "fddb622c-fd34-4d31-8633-abb5f80af1dc",
+      "comment": "",
+      "command": "click",
+      "target": "xpath=//a[@data-gtm='planner-tab']",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "ebb1e653-8b78-4940-8c9b-312f509bfc62",
+      "comment": "",
+      "command": "click",
+      "target": "css=.styled__CloseIcon-sc-7ty92d-4",
+      "targets": [
+        ["css=.styled__CloseIcon-sc-7ty92d-4", "css:finder"]
+      ],
+      "value": ""
+    }, {
+      "id": "57e0ba7d-e1a1-40b5-8b29-867783896452",
+      "comment": "",
+      "command": "click",
+      "target": "xpath=//a[@data-gtm='routes-tab']",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "587be0a7-27e6-4f14-b597-3de495800870",
+      "comment": "",
+      "command": "click",
+      "target": "css=.styled__CloseIcon-sc-7ty92d-4",
+      "targets": [
+        ["css=.styled__CloseIcon-sc-7ty92d-4", "css:finder"]
+      ],
+      "value": ""
+    }]
   }],
   "suites": [{
     "id": "e322aa98-437c-4cc8-8bfe-a11f6d0e444b",
@@ -358,7 +450,7 @@
     "persistSession": false,
     "parallel": true,
     "timeout": 300,
-    "tests": ["91fca515-3720-4dd0-b656-83f5499382bb", "91fca515-3720-4dd0-b656-83f5499382cc"]
+    "tests": ["91fca515-3720-4dd0-b656-83f5499382bb", "91fca515-3720-4dd0-b656-83f5499382cc", "91fca515-3720-4dd0-b656-83f5499382dd"]
   }],
   "urls": ["https://beta.trimet.org/"],
   "plugins": []
