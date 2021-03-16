@@ -1,12 +1,19 @@
 DIR=`dirname $0`
+SEP=${SEP:=":"}
+EXE=${EXE:=""}
 
 # set path to node_mod's install of drivers and selenium
-P=".:$DIR:$PWD/node_modules/.bin:$DIR/../node_modules/.bin"
-for d in "chromedriver geckodriver edgedriver msedgedriver"; do
-    P="$P:$PWD/node_modules/$d/bin"
-    P="$P:$DIR/../node_modules/$d/bin"
+P=".$SEP$DIR$SEP$PWD/node_modules/.bin$SEP$DIR/../node_modules/.bin"
+for d in chromedriver geckodriver edgedriver msedgedriver; do
+    DR="$PWD/node_modules/$d/bin"
+    if [ ! -f $DR/$d$EXE ]; then
+        echo "$P/$d$EXE doesn't exist"
+	cp $DR/$d $DR/$d$EXE
+    fi
+    P="$P$SEP$DR$SEP$DIR/../node_modules/$d/bin"
 done
-export PATH="$PATH:$P"
+export PATH="$P$SEP$PATH"
+echo $PATH
 
 # set selenium-side-runner default params
 TEST_URL=${TEST_URL:="https://labs.trimet.org"}   # note: export TEST_URL="http://localhost:8000" for testing locally
