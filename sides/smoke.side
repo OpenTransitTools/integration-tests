@@ -1,0 +1,74 @@
+{
+  "id": "3aaa1afd-76e6-4293-ac82-e9137ffd6ea6",
+  "version": "2.0",
+  "name": "x",
+  "url": "https://labs.trimet.org",
+  "tests": [{
+    "id": "d74d981c-42db-4a42-a434-e4b826152d43",
+    "name": "open",
+    "commands": []
+  }, {
+    "id": "23a2f975-d225-48d7-9fb3-c966fa84001d",
+    "name": "search",
+    "commands": [{
+      "id": "d58d32c1-3b28-4f6d-a3b7-eb5e24505909",
+      "comment": "",
+      "command": "open",
+      "target": "/home/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "95299fca-b92f-4451-80e3-ba88920868b5",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1016x714",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "d12f80ad-48d7-4f98-95b6-7f72e910f3ef",
+      "comment": "",
+      "command": "click",
+      "target": "css=.styled__NavInputDesktopMessageColumn-sc-1563ce6-2 > .Accessibility__SRHidden-sc-1d9wg4y-1",
+      "targets": [
+        ["css=.styled__NavInputDesktopMessageColumn-sc-1563ce6-2 > .Accessibility__SRHidden-sc-1d9wg4y-1", "css:finder"],
+        ["xpath=//div[@id='gatsby-focus-wrapper']/div/main/div[2]/div[2]/div[2]/div/a/div[2]/span", "xpath:idRelative"],
+        ["xpath=//div[2]/span", "xpath:position"],
+        ["xpath=//span[contains(.,'Search for a place, address or Stop ID...')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "d714337e-4480-401c-bdc2-20fbef081f0e",
+      "comment": "",
+      "command": "type",
+      "target": "css=.styled__Input-ixb7j8-6",
+      "targets": [
+        ["css=.styled__Input-ixb7j8-6", "css:finder"],
+        ["xpath=//input[@value='pdx']", "xpath:attributes"],
+        ["xpath=//div[@id='gatsby-focus-wrapper']/div/main/div[2]/div[2]/div[3]/div/div/div/div[2]/div/div/div[2]/div/span/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "pdx"
+    }, {
+      "id": "1b461c4e-7d1b-468b-b35d-6ab19bf161c6",
+      "comment": "",
+      "command": "click",
+      "target": "css=.styled__MenuItemLi-ixb7j8-11:nth-child(1) .styled__OptionContent-ixb7j8-14",
+      "targets": [
+        ["css=.styled__MenuItemLi-ixb7j8-11:nth-child(1) .styled__OptionContent-ixb7j8-14", "css:finder"],
+        ["xpath=//div[@id='gatsby-focus-wrapper']/div/main/div[2]/div[2]/div[3]/div/div/div/div[2]/div/div/div[2]/ul/li/a/div/div[2]", "xpath:idRelative"],
+        ["xpath=//a/div/div[2]", "xpath:position"]
+      ],
+      "value": ""
+    }]
+  }],
+  "suites": [{
+    "id": "5af1e2bc-0167-4044-b528-4e43db4acfc0",
+    "name": "Default Suite",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": ["d74d981c-42db-4a42-a434-e4b826152d43"]
+  }],
+  "urls": ["https://labs.trimet.org/"],
+  "plugins": []
+}
