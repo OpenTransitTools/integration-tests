@@ -45,12 +45,14 @@ def usage():
 def write_cap_file(rec):
     """
     .format() template to generate a .cap file for browserstack automate
+    NOTE: selenium is very sensitive to this format ... an extra space will make the test runner fail
+          so if things don't run or are behaving correctly, the template below could easily be the problem
     """
     template = """ capabilities:
      device: "{device}"
      orientation: "{orientation}"
      os: "{os}"
-      os_version: '{osVersion}'
+     os_version: '{osVersion}'
      browserName: "{browser}"
      browser_version: '{browserVersion}'
      real_mobile: true

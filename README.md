@@ -4,6 +4,9 @@ This suite of tests uses the Selenium side runner (https://www.selenium.dev/sele
 cmd-line system to execute automated integration tests for the "trimet.org" project.  These tests can either run against
 locally installed browsers and/or browsers hosted on browserstack.com
 
+The browsers we'll be targeting as of August 2021 are:
+![most important browsers to test](docs/images/important_browsers_2021.png?raw=true)
+
 pre-req:
 --------
 1. have Git, bash (cygwin on Windows), Node, Yarn and Python (2.7 or 3.x) installed on your machine
@@ -15,24 +18,23 @@ pre-req:
    * -- OR --
    * *BrowserStack* account that has the capability to run https://automate.browserstack.com/ 
 
-drivers:
-  EDGE: https://msedgewebdriverstorage.z22.web.core.windows.net/?prefix=90.0.789.1/
-
 run tests locally:
 -----------------
-1. scripts/smoke.sh CHROME
-1. (see scripts/base.sh and export BROWSERS to fit what browsers you'd like to target)
 1. scripts/selenium_local_browsers.sh
+1. you can control which browsers to test by setting the environment variable `export BROWSERS="firefox chrome safari MicrosoftEdge"`
+1. NOTE: Edge testing doesn't run (as of August 2021) on Mac.  The selenium test runner keeps complaining that it can't find the MicrosoftWebDriver.exe.  I've tried to manually install that driver on Mac, and still no luck.  
 
 run tests using BrowserStack: 
 ----------------------------
 1. log into https://automate.browserstack.com/
 1. copy uname and key from BrowserStack into a long string with a colon separating the two elements, ala \<your uname\>:\<your key\> <br>![BrowserStack Uname & Key img](docs/images/BrowserStack_uname_key.png?raw=true)
 1. cd scripts/browserstack
-1. python gen.py <your uname>:<your key> -t smoke
-1. ls *.cap  # the python app should have generated some number of browser targets for your tests 
+1. python gen.py <your uname>:<your key>
+1. ls caps/*.cap  # the python app should have generated some number of browser targets for your tests
+1. NOTE: there are cmd-line params to limit this list of devices, and also test portrait orientation, etc... ala the `-s == 'smoke'` cmd-line param  
 1. cd ../../
-1. scripts/ 
+1. scripts/selenium_browserstack.sh
+1. go back to  
 
 NOTES:
 1. https://www.browserstack.com/list-of-browsers-and-platforms/js_testing
