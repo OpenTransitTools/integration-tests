@@ -1,16 +1,16 @@
 {
   "id": "052a1537-b6b8-461f-8f2c-4cae23ceffb6",
   "version": "2.0",
-  "name": "pdx2zoo",
+  "name": "routes",
   "url": "https://labs.trimet.org",
   "tests": [{
     "id": "ffe2ed33-67c6-40cd-b8d1-7be6a4c59e16",
-    "name": "pdx2zoo",
+    "name": "routes",
     "commands": [{
       "id": "ed026ec8-e7be-40cc-9cdd-a26be63e9c88",
       "comment": "",
       "command": "open",
-      "target": "/home/planner-trip?fromPlace=PDX%3A%3A45.589178%2C-122.593464&toPlace=Zoo%3A%3A45.510185%2C-122.715861&mode=WALK%2CBUS%2CTRAM%2CRAIL%2CGONDOLA",
+      "target": "/home/route/100",
       "targets": [],
       "value": ""
     }, {
@@ -24,7 +24,7 @@
       "id": "6ed618d9-9843-455e-bf9b-26e635940f97",
       "comment": "",
       "command": "verifyTitle",
-      "target": "Your trip itinerary | TriMet",
+      "target": "MAX Blue Line | TriMet",
       "targets": [],
       "value": ""
     }]
