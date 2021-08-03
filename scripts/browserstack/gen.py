@@ -1,71 +1,109 @@
+"""
+simple utility that generate a bunch of .cap files for use in automate.browserstack.com
+
+:see:
+  https://www.browserstack.com/automate/capabilities
+  https://www.browserstack.com/list-of-browsers-and-platforms/js_testing
+  https://www.browserstack.com/docs/automate/selenium/selenium-ide
+
+:note - to deleting tests from BS via the command line:
+  curl -u "<uname:pass>" https://api.browserstack.com/automate/builds.json (then take 'hashed_id' from that output for below)
+  curl -u "<uname:pass>" -X DELETE https://api.browserstack.com/automate/builds/<hashed_id>.json
+"""
 import os
 import sys
+from datetime import datetime
 
-# https://www.browserstack.com/automate/capabilities
-# https://www.browserstack.com/list-of-browsers-and-platforms/js_testing
-# https://www.browserstack.com/docs/automate/selenium/selenium-ide
+import devices.iphone_new
+import devices.iphone_old
+import devices.android_new
+import devices.android_old
 
-browsers = [
-  {'name': 'iPhone_8+ChromePort', 'device': 'iPhone 8 Plus', 'browser': 'Chrome', 'browserVersion': 'latest', 'os': 'iOS', 'osVersion': '12', 'orientation': 'portrait'},
-  {'name': 'iPhone_8+ChromeLand', 'device': 'iPhone 8 Plus', 'browser': 'Chrome', 'browserVersion': 'latest', 'os': 'iOS', 'osVersion': '12', 'orientation': 'landscape'},
 
-  {'name': 'iPhoneXChromePort', 'device': 'iPhone X', 'browser': 'Chrome', 'browserVersion': 'latest', 'os': 'iOS', 'osVersion': '11', 'orientation': 'portrait'},
-  {'name': 'iPhoneXSafariLand', 'device': 'iPhone X', 'browser': 'Safari', 'browserVersion': 'latest', 'os': 'iOS', 'osVersion': '11', 'orientation': 'landscape'},
+# vars
+browsers = []
+bs_key = None
+landscape = desktops = tablets = older = smoke = False
+phones = True
+cmd_line_opts = "-l [add landscape tests], -m [phones (on by default)], -d [desktops], -t [tablets], -o [older devices], -s [generate 1 device per OS (smoke tests)]"
+build = "gen ran {:%Y.%m.%d_%H.%M}".format(datetime.now())
+caps_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'caps')
 
-  {'name': 'iPhone_11Chrome', 'device': 'iPhone 11 Pro Max', 'browser': 'Chrome', 'browserVersion': 'latest', 'os': 'iOS', 'osVersion': '13', 'orientation': 'portrait'},
-  {'name': 'iPhone_11Safari', 'device': 'iPhone 11 Pro', 'browser': 'Safari', 'browserVersion': 'latest', 'os': 'iOS', 'osVersion': '13', 'orientation': 'portrait'},
-  
-  {'name': 'iPhone_12+Safari', 'device': 'iPhone 12 Pro', 'browser': 'Safari', 'browserVersion': 'latest', 'os': 'iOS', 'osVersion': '14', 'orientation': 'portrait'},
-  {'name': 'iPhone_12+Chrome', 'device': 'iPhone 12', 'browser': 'Chrome', 'browserVersion': 'latest', 'os': 'iOS', 'osVersion': '14', 'orientation': 'portrait'},  
 
-  {'name': 'androidGalaxy8Chrome', 'device': 'Samsung Galaxy S8 Plus', 'browser': 'Chrome', 'browserVersion': 'latest', 'os': 'android', 'osVersion': '9.0', 'orientation': 'portrait'},
-  {'name': 'androidPixel4Chrome', 'device': 'Google Pixel 4', 'browser': 'Chrome', 'browserVersion': 'latest', 'os': 'android', 'osVersion': '11.0', 'orientation': 'portrait'},
-  {'name': 'androidPixel4XLChrome', 'device': 'Google Pixel 4 XL', 'browser': 'Chrome', 'browserVersion': 'latest', 'os': 'android', 'osVersion': '10.0', 'orientation': 'landscape'},  
-  {'name': 'androidPixel5FF', 'device': 'Google Pixel 5', 'browser': 'Firefox', 'browserVersion': 'latest', 'os': 'android', 'osVersion': '11.0', 'orientation': 'portrait'},  
-  {'name': 'androidMotoChrome', 'device': 'Motorola Moto G7 Play', 'browser': 'Chrome', 'browserVersion': 'latest', 'os': 'android', 'osVersion': '9.0', 'orientation': 'portrait'},
-    
-  {'name': 'iPad+SafariPort', 'device': 'iPad Pro 11 2018', 'browser': 'Safari', 'browserVersion': 'latest', 'os': 'iOS', 'osVersion': '12', 'orientation': 'portrait'},
-  {'name': 'iPad+SafariLand', 'device': 'iPad Mini 2019', 'browser': 'Safari', 'browserVersion': 'latest', 'os': 'iOS', 'osVersion': '12', 'orientation': 'landscape'},  
+def usage():
+    """
+    cmd line usage (note - hoping to make this .py portable and zero dependencies)
+    """
+    print('\n usage:\tpython gen.py uname:password [optional parameters]')
+    print('\tprovide a valid uname:password as a cmdline param here, else your tests will not run on browserstack')
+    print('\tnote: optional dashed cmd-line params may be added after the first uname:password param')
+    print('\t  {}\n'.format(cmd_line_opts))
 
-  {'name': 'androidGalaxyTabChromePort', 'device': 'Samsung Galaxy Tab S6', 'browser': 'Chrome', 'browserVersion': 'latest', 'os': 'android', 'osVersion': '9.0', 'orientation': 'portrait'},
-  {'name': 'androidGalaxyTabFFLand', 'device': 'Samsung Galaxy Tab S6', 'browser': 'Firefox', 'browserVersion': 'latest', 'os': 'android', 'osVersion': '9.0', 'orientation': 'landscape'},
-  {'name': 'androidGalaxyTabUcPort', 'device': 'Samsung Galaxy Tab S6', 'browser': 'UC Browser', 'browserVersion': 'latest', 'os': 'android', 'osVersion': '9.0', 'orientation': 'portrait'},
-  {'name': 'androidGalaxyTabSamLand', 'device': 'Samsung Galaxy Tab S6', 'browser': 'Samsung Internet', 'browserVersion': 'latest', 'os': 'android', 'osVersion': '9.0', 'orientation': 'landscape'},
-]
-  
-bs_key = "your browserstack '<uname>:<key>' here" if len(sys.argv) < 2 else sys.argv[1]
 
-template = """ capabilities:
+def write_cap_file(rec):
+    """
+    .format() template to generate a .cap file for browserstack automate
+    """
+    template = """ capabilities:
      device: "{device}"
      orientation: "{orientation}"
      os: "{os}"
-     os_version: '{osVersion}'
+      os_version: '{osVersion}'
      browserName: "{browser}"
      browser_version: '{browserVersion}'
      real_mobile: true
      name: '{browser} + {orientation}'
-     build: "blah"
+     build: '{build}'
      browserstack.debug: true
      browserstack.console: "verbose"
      browserstack.networkLogs: true
  server: "https://{key}@hub-cloud.browserstack.com/wd/hub"
-"""
+ """
+    filename = os.path.join(caps_dir, rec['name'] + ".cap")
+    with open(filename, 'w') as f:
+        f.write(template.format(key=bs_key, build=build, **rec))
 
-root = os.path.dirname(os.path.abspath(__file__))
 
-for n in browsers:
-  filename = os.path.join(root, n['name'] + ".cap")
-  with open(filename, 'w') as f:
-    f.write(template.format(key=bs_key, **n))
+def make_landscape(rec, orientation='landscape'):
+    ret_val = rec
+    ret_val['orientation'] = orientation
+    ret_val['name'] = "{}{}".format(rec['name'], orientation.capitalize())
+    return ret_val
 
-#
-# deleting tests:
-#   curl -u "<uname:pass>" https://api.browserstack.com/automate/builds.json (then take 'hashed_id' from that output for below)
-#   curl -u "<uname:pass>" -X DELETE https://api.browserstack.com/automate/builds/<hashed_id>.json
-#
-if len(sys.argv) < 2:
-  print('ERROR: provide a valid uname:password as a cmdline param here, else your tests will not run on browserstack')
+
+# process the cmd-line
+if len(sys.argv) > 1:
+    bs_key = sys.argv[1]
+    if ":" not in bs_key:
+        bs_key = None
+    else:
+        landscape = True if "-l" in sys.argv else False
+        older = True if "-o" in sys.argv else False
+        smoke = True if "-s" in sys.argv else False
+        desktops = True if "-d" in sys.argv else False
+        tablets = True if "-t" in sys.argv else False
+        if desktops or tablets:
+            phones = True if "-p" in sys.argv else False
+
+
+# populate the browsers array
+browsers.extend(devices.android_new.phones)
+
+
+# process
+if bs_key is None or len(browsers) < 1:
+    usage()
 else:
-  print('NOTE: to bulk delete old tests from BS, use the following 2 commands:')
-  print('curl -u "{}" https://api.browserstack.com/automate/builds.json'.format(sys.argv[1]))
-  print('curl -u "{}" -X DELETE https://api.browserstack.com/automate/builds/<hashed_id>.json'.format(sys.argv[1]))
+    # gen caps/*.cap capability files
+    for rec in browsers:
+        write_cap_file(rec)
+        if landscape:
+            write_cap_file(make_landscape(rec))
+
+    # inform how one can remove these tests, etc...
+    print('SUCCESS...')
+    print("list all the device targets via `ls {}`".format(caps_dir))
+    print('\nNOTE: to bulk delete old tests from BS, use this 2-step process (get BS build ids, then DELETE them):')
+    print(' curl -u "{}" https://api.browserstack.com/automate/builds.json'.format(sys.argv[1]))
+    print(' curl -u "{}" -X DELETE https://api.browserstack.com/automate/builds/<hashed_id>.json'.format(sys.argv[1]))
+    print()
