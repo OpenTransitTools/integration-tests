@@ -34,6 +34,8 @@ def usage():
     """
     cmd line usage (note - hoping to make this .py portable and zero dependencies)
     """
+    if bs_key is None:
+        print("\n ERROR:\tyou need to provide the uname:password 'ACCESS KEY' from BrowserStack's automate (see README.md)")
     print('\n usage:\tpython gen.py uname:password [optional parameters]')
     print('\tprovide a valid uname:password as a cmdline param here, else your tests will not run on browserstack')
     print('\tnote: optional dashed cmd-line params may be added after the first uname:password param')
