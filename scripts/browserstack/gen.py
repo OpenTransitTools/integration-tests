@@ -56,7 +56,7 @@ def write_cap_file(rec):
      browserName: "{browser}"
      browser_version: '{browserVersion}'
      real_mobile: true
-     name: '{browser} + {orientation}'
+     name: '{name}'
      build: '{build}'
      browserstack.debug: true
      browserstack.console: "verbose"
@@ -69,10 +69,25 @@ def write_cap_file(rec):
 
 
 def make_landscape(rec, orientation='landscape'):
+    """
+    set landscape in record (and name / file name)
+    NOTE: this breaks the records loaded in ... might need to deep copy
+    """
     ret_val = rec
     ret_val['orientation'] = orientation
     ret_val['name'] = "{}{}".format(rec['name'], orientation.capitalize())
     return ret_val
+
+
+def append_device_array(recs, is_smoke=False):
+    """
+    add element(s) to our device array
+    """
+    if len(recs) > 0:
+        if is_smoke:
+            browsers.append(recs[0])
+        else:
+            browsers.extend(recs)
 
 
 # process the cmd-line
@@ -89,10 +104,24 @@ if len(sys.argv) > 1:
         if desktops or tablets:
             phones = True if "-p" in sys.argv else False
 
-
 # populate the browsers array
-browsers.extend(devices.android_new.phones)
+if phones:
+    append_device_array(devices.android_new.phones, smoke)
+    append_device_array(devices.iphone_new.phones, smoke)
+    if older:
+        append_device_array(devices.android_old.phones, smoke)
+        append_device_array(devices.iphone_old.phones, smoke)
 
+if tablets:
+    append_device_array(devices.android_new.tablets, smoke)
+    append_device_array(devices.iphone_new.tablets, smoke)
+    if older:
+        append_device_array(devices.android_old.tablets, smoke)
+        append_device_array(devices.iphone_old.tablets, smoke)
+
+if desktops:
+    if older:
+        pass
 
 # process
 if bs_key is None or len(browsers) < 1:

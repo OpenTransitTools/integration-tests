@@ -13,7 +13,7 @@ for d in chromedriver geckodriver edgedriver msedgedriver; do
     P="$P$SEP$DR$SEP$DIR/../node_modules/$d/bin"
 done
 export PATH="./scripts$SEP$P$SEP$PATH"
-echo $PATH
+echo "export PATH=\"$PATH\""
 
 # set selenium-side-runner default params
 TEST_URL=${TEST_URL:="https://labs.trimet.org"}   # note: export TEST_URL="http://localhost:8000" for testing locally
