@@ -33,7 +33,7 @@
     "id": "9dce5ddb-fb63-4b88-89d1-bf6e207764a5",
     "name": "Default Suite",
     "persistSession": false,
-    "parallel": false,
+    "parallel": true,
     "timeout": 300,
     "tests": ["ffe2ed33-67c6-40cd-b8d1-7be6a4c59e16"]
   }],
