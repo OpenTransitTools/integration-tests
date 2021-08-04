@@ -11,8 +11,9 @@ parent_dir = os.path.join(this_dir, '..')
 smoke_dir = os.path.join(this_dir, 'smoke')
 
 with open(filename, 'w') as f:
+  pass
 
-json.load(file object)
+## json.load(file object)
 
 
 for rec in browsers:

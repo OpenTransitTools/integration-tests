@@ -1,3 +1,10 @@
+tl;dr - quickstart:
+------------------
+1. git clone https://github.com/OpenTransitTools/integration-tests.git
+1. cd ./integration-tests/
+1. yarn install
+1. scripts/selenium_local_browsers.sh
+
 about:
 ------
 This suite of tests uses the Selenium side runner (https://www.selenium.dev/selenium-ide/docs/en/introduction/command-line-runner)
