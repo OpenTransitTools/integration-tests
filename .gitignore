@@ -2,6 +2,7 @@
 logs
 *.log
 *.cap
+*.pyc
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
