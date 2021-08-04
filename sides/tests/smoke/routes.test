@@ -1,0 +1,26 @@
+{
+    "id": "ffe2ed33-67c6-40cd-aaa2-aaaaaaaaaaa",
+    "name": "routes",
+    "commands": [{
+      "id": "ed026ec8-e7be-40cc-aaa2-aaaaaaaaaa1",
+      "comment": "",
+      "command": "open",
+      "target": "/home/route/100",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "1811e702-259c-4899-aaa2-aaaaaaaaaa2",
+      "comment": "",
+      "command": "pause",
+      "target": "3300",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "6ed618d9-9843-455e-aaa2-aaaaaaaaaa3",
+      "comment": "",
+      "command": "verifyTitle",
+      "target": "MAX Blue Line | TriMet",
+      "targets": [],
+      "value": ""
+    }]
+}
