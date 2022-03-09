@@ -22,9 +22,14 @@ def make_parser(prog_name='scripts/browserstack/gen.py', do_parse=True):
         action="store_true"
     )
 
-    parser.add_argument("--number_caps", "--num", "--n", "-n",
-        help="limit the number of cap files to this number",
-        action="store_true"
+    parser.add_argument("--number", "--num", "--n", "-n",
+        default=111111111,
+        help="limit the number of cap files (or urls) to this number"
+    )
+
+    parser.add_argument("--urls", "--u", "-u",
+        help="print browserstack URL to these devices",
+        action="store_true"        
     )
 
     parser.add_argument("--caps_dir", "--dir", "--d", "-d",

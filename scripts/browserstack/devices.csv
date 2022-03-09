@@ -1,13 +1,41 @@
-name,device,os,osVersion,browser,notes
-# iPhones
-iPhoneSafari12Max,iPhone 12 Pro Max,iOS,14.0,safari,this is a phone
-iPhoneChrome12Mini,iPhone 12 Mini,iOS,14.0,chrome,
-iPhoneSafari11Max,iPhone 11 Pro Max,iOS,13.0,safari,
-iPadSafari12.9_2020Pro,iPad Pro 12.9 2020,iOS,14.0,safari,this is a tablet
-# andriod phones
-androidChromeGalaxyS21Plus,Samsung Galaxy S21 Plus,andriod,11.0,chrome,
-androidSIGalaxyS20,Samsung Galaxy S20 Plus,andriod,10.0,samsung,funky phone browser
-androidChromePixel5,Google Pixel 5,andriod,11.0,chrome,
-androidChromePixel3,Google Pixel 3,andriod,9.0,chrome,
-androidFFPixel3,Google Pixel 3,andriod,9.0,firefox,
+name,device,os,osVersion,browser,browserVersion,notes
+# windows
+winFF63,windows,windows,10,firefox,63.0,oldest working Win/FF browser 2022
+winChrome73,windows,windows,10,chrome,73.0,oldest working Win/Chrome browser 2022
 
+https://live.browserstack.com/dashboard#os=Windows&os_version=10&browser=Edge&browser_version=98.0&device_browser=chrome&zoom_to_fit=true&full_screen=true&resolution=responsive-mode&url=https%3A%2F%2Ftrimet.org%2Fhome%2F&speed=1
+
+# mac
+macFF63,mac,mac,10,firefox,63.0,oldest working Mac/FF browser 2022
+macChrome63,mac,mac,10,chrome,73.0,oldest working Mac/Chrome browser 2022
+
+# iPhones
+
+works
+https://live.browserstack.com/dashboard#os=iOS&os_version=12.0&device_browser=safari&zoom_to_fit=true&full_screen=true&url=https%3A%2F%2Ftrimet.org%2Fhome%2Fsearch&speed=1
+
+iPhone 6S v12.3
+https://live.browserstack.com/dashboard#os=iOS&os_version=12.0&device_browser=safari&zoom_to_fit=true&full_screen=true&url=https%3A%2F%2Ftrimet.org%2Fhome%2Fsearch&speed=1
+https://live.browserstack.com/dashboard#os=iOS&os_version=12.0&device_browser=chrome&zoom_to_fit=true&full_screen=true&url=https%3A%2F%2Ftrimet.org%2Fhome%2Fsearch&speed=1
+
+not working
+https://live.browserstack.com/dashboard#os=iOS&os_version=11.0&device_browser=safari&zoom_to_fit=true&full_screen=true&url=https%3A%2F%2Ftrimet.org%2Fhome%2F&speed=1
+
+
+iPhoneSafari12Max,iPhone 12 Pro Max,iOS,14.0,safari,latest,this is a phone
+iPhoneChrome12Mini,iPhone 12 Mini,iOS,14.0,chrome,latest,
+iPhoneSafari11Max,iPhone 11 Pro Max,iOS,13.0,safari,latest,
+iPadSafari12.9_2020Pro,iPad Pro 12.9 2020,iOS,14.0,safari,latest,this is a tablet
+
+# andriod phones
+
+works
+https://live.browserstack.com/dashboard#os=android&os_version=9.0&device=Samsung+Galaxy+A10&device_browser=chrome&zoom_to_fit=true&full_screen=true&url=https%3A%2F%2Ftrimet.org%2Fhome%2Fsearch&speed=1
+
+not working:
+
+androidChromeGalaxyS21Plus,Samsung Galaxy S21 Plus,andriod,11.0,chrome,latest,
+androidSIGalaxyS20,Samsung Galaxy S20 Plus,andriod,10.0,samsung,latest,funky phone browser
+androidChromePixel5,Google Pixel 5,andriod,11.0,chrome,latest,
+androidChromePixel3,Google Pixel 3,andriod,9.0,chrome,latest,
+androidFFPixel3,Google Pixel 3,andriod,9.0,firefox,latest,

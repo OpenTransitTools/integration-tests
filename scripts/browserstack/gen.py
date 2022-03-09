@@ -10,14 +10,13 @@ simple utility that generate a bunch of .cap files for use in automate.browserst
   curl -u "<uname:pass>" https://api.browserstack.com/automate/builds.json (then take 'hashed_id' from that output for below)
   curl -u "<uname:pass>" -X DELETE https://api.browserstack.com/automate/builds/<hashed_id>.json
 """
-import os
 from datetime import datetime
 
 import cmd_line
 import device_reader
 
 
-def write_cap_file(rec):
+def write_cap_file(rec, filename, bs_key):
     """
     .format() template to generate a .cap file for browserstack automate
     NOTE: selenium is very sensitive to this format ... an extra space will make the test runner fail
@@ -39,9 +38,14 @@ def write_cap_file(rec):
      browserstack.networkLogs: true
  server: "https://{key}@hub-cloud.browserstack.com/wd/hub"
  """
-    filename = os.path.join(caps_dir, rec['name'] + ".cap")
     with open(filename, 'w') as f:
         f.write(template.format(key=bs_key, build=build, **rec))
+
+
+def print_urls(rec, url="https%3A%2F%2Ftrimet.org%2Fhome"):
+    #https://live.browserstack.com/dashboard#os=android&os_version=9.0&device=Samsung+Galaxy+A10&device_browser=chrome&zoom_to_fit=true&full_screen=true&url=https%3A%2F%2Ftrimet.org%2Fhome%2Fsearch&speed=1
+    template = "https://live.browserstack.com/dashboard#device={device}&os={os}&os_version={osVersion}&browser={browser}&browser_version={browserVersion}&device_browser={browser}&url={url}&zoom_to_fit=true&full_screen=true&resolution=responsive-mode&speed=1"
+    print(template.format(url=url, **rec))
 
 
 def make_landscape(rec, orientation='landscape'):
@@ -55,28 +59,19 @@ def make_landscape(rec, orientation='landscape'):
     return ret_val
 
 
-def x():
-    for rec in browsers:
-        write_cap_file(rec)
-        if landscape:
-            write_cap_file(make_landscape(rec))
-
-
-def append_device_array(recs, is_smoke=False):
+def process(recs, args):
     """
     add element(s) to our device array
     """
-    if len(recs) > 0:
-        if is_smoke:
-            browsers.append(recs[0])
-        else:
-            browsers.extend(recs)
+    for i, r in enumerate(recs):
+        if args.number < i: break
+        if args.urls: print_urls(r)
 
 
 def main():
     args = cmd_line.make_parser()
     recs = device_reader.parse_csv(args.devices_csv)
-    print(recs)
+    process(recs, args)
 
 
 if __name__ == "__main__":
