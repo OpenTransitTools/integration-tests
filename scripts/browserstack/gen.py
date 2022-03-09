@@ -11,10 +11,10 @@ simple utility that generate a bunch of .cap files for use in automate.browserst
   curl -u "<uname:pass>" -X DELETE https://api.browserstack.com/automate/builds/<hashed_id>.json
 """
 import os
-import sys
 from datetime import datetime
 
 import cmd_line
+import device_reader
 
 # vars
 browsers = []
@@ -81,6 +81,8 @@ def append_device_array(recs, is_smoke=False):
 
 def main():
     args = cmd_line.make_parser()
+    recs = device_reader.parse_csv(args.devices_csv)
+    print(recs)
 
 
 if __name__ == "__main__":
