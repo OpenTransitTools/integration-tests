@@ -1,2 +1,13 @@
-x,y,z,a
-1,2,3,4
+name,device,os,osVersion,browser,notes
+# iPhones
+iPhoneSafari12Max,iPhone 12 Pro Max,iOS,14.0,safari,this is a phone
+iPhoneChrome12Mini,iPhone 12 Mini,iOS,14.0,chrome,
+iPhoneSafari11Max,iPhone 11 Pro Max,iOS,13.0,safari,
+iPadSafari12.9_2020Pro,iPad Pro 12.9 2020,iOS,14.0,safari,this is a tablet
+# andriod phones
+androidChromeGalaxyS21Plus,Samsung Galaxy S21 Plus,andriod,11.0,chrome,
+androidSIGalaxyS20,Samsung Galaxy S20 Plus,andriod,10.0,samsung,funky phone browser
+androidChromePixel5,Google Pixel 5,andriod,11.0,chrome,
+androidChromePixel3,Google Pixel 3,andriod,9.0,chrome,
+androidFFPixel3,Google Pixel 3,andriod,9.0,firefox,
+

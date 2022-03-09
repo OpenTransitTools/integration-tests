@@ -16,13 +16,6 @@ from datetime import datetime
 import cmd_line
 import device_reader
 
-# vars
-browsers = []
-bs_key = None
-landscape = desktops = tablets = older = smoke = False
-phones = True
-build = "gen ran {:%Y.%m.%d_%H.%M}".format(datetime.now())
-
 
 def write_cap_file(rec):
     """
@@ -30,6 +23,7 @@ def write_cap_file(rec):
     NOTE: selenium is very sensitive to this format ... an extra space will make the test runner fail
           so if things don't run or are behaving correctly, the template below could easily be the problem
     """
+    build = "gen ran {:%Y.%m.%d_%H.%M}".format(datetime.now())
     template = """ capabilities:
      device: "{device}"
      orientation: "{orientation}"

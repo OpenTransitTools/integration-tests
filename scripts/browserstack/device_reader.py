@@ -1,4 +1,5 @@
 from csv import DictReader
+import re
 
 
 def parse_csv(csv_file):
@@ -6,7 +7,7 @@ def parse_csv(csv_file):
 
     def is_valid(rec):
         ret_val = False
-        if rec:
+        if rec and rec['device']:
             ret_val = True
         return ret_val
 
