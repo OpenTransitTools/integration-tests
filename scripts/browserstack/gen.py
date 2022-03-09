@@ -14,32 +14,14 @@ import os
 import sys
 from datetime import datetime
 
-import devices.iphone_new
-import devices.iphone_old
-import devices.android_new
-import devices.android_old
-
+import cmd_line
 
 # vars
 browsers = []
 bs_key = None
 landscape = desktops = tablets = older = smoke = False
 phones = True
-cmd_line_opts = "-l [add landscape tests], -m [phones (on by default)], -d [desktops], -t [tablets], -o [older devices], -s [generate 1 device per OS (smoke tests)]"
 build = "gen ran {:%Y.%m.%d_%H.%M}".format(datetime.now())
-caps_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'caps')
-
-
-def usage():
-    """
-    cmd line usage (note - hoping to make this .py portable and zero dependencies)
-    """
-    if bs_key is None:
-        print("\n ERROR:\tyou need to provide the uname:password 'ACCESS KEY' from BrowserStack's automate (see README.md)")
-    print('\n usage:\tpython gen.py uname:password [optional parameters]')
-    print('\tprovide a valid uname:password as a cmdline param here, else your tests will not run on browserstack')
-    print('\tnote: optional dashed cmd-line params may be added after the first uname:password param')
-    print('\t  {}\n'.format(cmd_line_opts))
 
 
 def write_cap_file(rec):
@@ -79,6 +61,13 @@ def make_landscape(rec, orientation='landscape'):
     return ret_val
 
 
+def x():
+    for rec in browsers:
+        write_cap_file(rec)
+        if landscape:
+            write_cap_file(make_landscape(rec))
+
+
 def append_device_array(recs, is_smoke=False):
     """
     add element(s) to our device array
@@ -90,53 +79,10 @@ def append_device_array(recs, is_smoke=False):
             browsers.extend(recs)
 
 
-# process the cmd-line
-if len(sys.argv) > 1:
-    bs_key = sys.argv[1]
-    if ":" not in bs_key:
-        bs_key = None
-    else:
-        landscape = True if "-l" in sys.argv else False
-        older = True if "-o" in sys.argv else False
-        smoke = True if "-s" in sys.argv else False
-        desktops = True if "-d" in sys.argv else False
-        tablets = True if "-t" in sys.argv else False
-        if desktops or tablets:
-            phones = True if "-p" in sys.argv else False
+def main():
+    args = cmd_line.make_parser()
 
-# populate the browsers array
-if phones:
-    append_device_array(devices.android_new.phones, smoke)
-    append_device_array(devices.iphone_new.phones, smoke)
-    if older:
-        append_device_array(devices.android_old.phones, smoke)
-        append_device_array(devices.iphone_old.phones, smoke)
 
-if tablets:
-    append_device_array(devices.android_new.tablets, smoke)
-    append_device_array(devices.iphone_new.tablets, smoke)
-    if older:
-        append_device_array(devices.android_old.tablets, smoke)
-        append_device_array(devices.iphone_old.tablets, smoke)
+if __name__ == "__main__":
+    main()
 
-if desktops:
-    if older:
-        pass
-
-# process
-if bs_key is None or len(browsers) < 1:
-    usage()
-else:
-    # gen caps/*.cap capability files
-    for rec in browsers:
-        write_cap_file(rec)
-        if landscape:
-            write_cap_file(make_landscape(rec))
-
-    # inform how one can remove these tests, etc...
-    print('SUCCESS...')
-    print("list all the device targets via `ls {}`".format(caps_dir))
-    print('\nNOTE: to bulk delete old tests from BS, use this 2-step process (get BS build ids, then DELETE them):')
-    print(' curl -u "{}" https://api.browserstack.com/automate/builds.json'.format(sys.argv[1]))
-    print(' curl -u "{}" -X DELETE https://api.browserstack.com/automate/builds/<hashed_id>.json'.format(sys.argv[1]))
-    print()
