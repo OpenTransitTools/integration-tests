@@ -17,7 +17,7 @@ import cmd_line
 import device_reader
 
 
-def write_cap_file(rec, key, name, path, orientation="verticle"):
+def write_cap_file(rec, key, name, path, orientation="vertical"):
     """
     .format() template to generate a .cap file for browserstack automate
     NOTE: selenium is very sensitive to this format ... an extra space will make the test runner fail
@@ -48,17 +48,6 @@ def print_urls(rec, url="https%3A%2F%2Ftrimet.org%2Fhome"):
     #https://live.browserstack.com/dashboard#os=android&os_version=9.0&device=Samsung+Galaxy+A10&device_browser=chrome&zoom_to_fit=true&full_screen=true&url=https%3A%2F%2Ftrimet.org%2Fhome%2Fsearch&speed=1
     template = "https://live.browserstack.com/dashboard#device={device}&os={os}&os_version={osVersion}&browser={browser}&browser_version={browserVersion}&device_browser={browser}&url={url}&zoom_to_fit=true&full_screen=true&resolution=responsive-mode&speed=1"
     print(template.format(url=url, **rec))
-
-
-def make_landscape(rec, orientation='landscape'):
-    """
-    set landscape in record (and name / file name)
-    NOTE: this breaks the records loaded in ... might need to deep copy
-    """
-    ret_val = rec
-    ret_val['orientation'] = orientation
-    ret_val['name'] = "{}{}".format(rec['name'], orientation.capitalize())
-    return ret_val
 
 
 def process(recs, args):
