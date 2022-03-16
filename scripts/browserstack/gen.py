@@ -22,22 +22,6 @@ def is_desktop(rec):
     return rec['device'] in ["win", "mac"]
 
 
-"""
-
-capabilities:
-     os: 'OS X'
-     os_version: 'high sierra'
-     browserName: 'firefox'
-     browser_version: '63.0'
-     real_mobile: true
-     name: 'macFF63'
-     build: 'gen ran 2022.03.15_21.13'
-     browserstack.debug: true
-     browserstack.console: 'verbose'
-     browserstack.networkLogs: true
- server: "https://purcellf_bVymNM:a3T9Xs5DiiW2zcj7cNJc@hub-cloud.browserstack.com/wd/hub"
- """
-
 def write_cap_file(rec, key, name, path, orientation="vertical"):
     """
     .format() template to generate a .cap file for browserstack automate
