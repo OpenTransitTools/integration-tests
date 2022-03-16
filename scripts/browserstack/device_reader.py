@@ -1,5 +1,4 @@
 from csv import DictReader
-import re
 
 
 def parse_csv(csv_file, is_baseline, os_filter, browser_filter):
@@ -25,7 +24,7 @@ def parse_csv(csv_file, is_baseline, os_filter, browser_filter):
 
         if os and browser and baseline:
             if has_os_filter or has_browser_filter:
-                # import pdb; pdb.set_trace()
+                #import pdb; pdb.set_trace()
                 if has_os_filter and has_browser_filter:
                     if find_in(os_filter, os) and find_in(browser_filter, browser):
                         ret_val = False

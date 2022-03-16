@@ -1,18 +1,18 @@
 name,device,os,osVersion,browser,browserVersion,baseline,notes
 # windows
-winFF63,windows,windows,10,firefox,63.0,true,oldest working FF on Win browser - March 2022
-winChrome73,windows,windows,10,chrome,73.0,true,oldest working Chrome on Win browser - March 2022
-win11Edge80,windows,windows,11,edge,80.0,true,oldest working Edge browser on Win - March 2022 (BS has v18 no run)
-win11Opera60,windows,windows,11,opera,60.0,true,oldest working Opera on Win browser - March 2022
+winFF63,win,Windows,10,firefox,63.0,true,oldest working FF on Win browser - March 2022
+winChrome73,win,Windows,10,chrome,73.0,true,oldest working Chrome on Win browser - March 2022
+win11Edge80,win,Windows,11,edge,80.0,true,oldest working Edge browser on Win - March 2022 (BS has v18 no run)
+win11Opera60,win,Windows,11,opera,60.0,true,oldest working Opera on Win browser - March 2022
 
 # mac
-macFF63,mac,OS+X,high+sierra,firefox,63.0,true,oldest working FF on Mac browser - March 2022
-macChrome63,mac,OS+X,sierra,chrome,73.0,true,oldest working Chrome on Mac browser - March 2022
-macSafari12,mac,OS+X,mojave,safari,12.1,true,oldest working Safari on Mac browser - March 2022 (sierra on BS has older non working Safari)
-macEdge80,mac,OS+X,big+sur,edge,80,true,oldest working Edge on Mac browser - March 2022
-macOpera60,mac,OS+X,monterey,opera,60.0,true,oldest working Opera on Mac browser - March 2022
-macSafari15,mac,OS+X,monterey,safari,15.3,false,newest Monterey and Safari - March 2022
-macChrome15,mac,OS+X,monterey,chrome,15.3,false,newest Monterey and Chrome - March 2022
+macFF63,mac,OS X,High Sierra,firefox,63.0,true,oldest working FF on Mac browser - March 2022
+macChrome63,mac,OS X,Sierra,chrome,73.0,true,oldest working Chrome on Mac browser - March 2022
+macSafari12,mac,OS X,Mojave,safari,12.1,true,oldest working Safari on Mac browser - March 2022 (sierra on BS has older non working Safari)
+macEdge80,mac,OS X,Big Sur,edge,80,true,oldest working Edge on Mac browser - March 2022
+macOpera60,mac,OS X,Monterey,opera,60.0,true,oldest working Opera on Mac browser - March 2022
+macSafari15,mac,OS X,Monterey,safari,15.3,false,newest Monterey and Safari - March 2022
+macChrome15,mac,OS X,Monterey,chrome,15.3,false,newest Monterey and Chrome - March 2022
 
 # iPhones
 iPhoneSafari7,iPhone 7,iOS,12.3,safari,latest,true,this is iOS 12.3 + Safari 12 (other BS iOS 12s are non functioning 12.1)
@@ -31,6 +31,6 @@ iPadProChrome,iPad Pro 12.9 2021,iOS,14.0,chrome,latest,false,newer iPad
 iPadProSafari,iPad 9th,iOS,15.0,chrome,latest,false,newest iPad
 
 # andriod phones
-androidGalaxyNote4,Samsung+Galaxy+Note+4,andriod,10.0,firefox,75.0,false,this is firefox 75 on older (2014) device
-androidGalaxyTabS7,Samsung+Galaxy+Tab+S7,andriod,10.0,chrome,latest,false,this is chrome 80 on tablet
+androidGalaxyNote4,Samsung Galaxy Note 4,andriod,10.0,firefox,75.0,false,this is firefox 75 on older (2014) device
+androidGalaxyTabS7,Samsung Galaxy Tab S7,andriod,10.0,chrome,latest,false,this is chrome 80 on tablet
 androidGalaxyS20,Samsung Galaxy S20 Plus,andriod,10.0,samsung,latest,false,funky phone browser

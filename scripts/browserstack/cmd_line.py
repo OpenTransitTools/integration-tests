@@ -42,6 +42,11 @@ def make_parser(prog_name='scripts/browserstack/gen.py', do_parse=True):
         help="directory to store the generated .caps files"
     )
 
+    parser.add_argument("--rm_caps", "--rm", "-rm",
+        action="store_true",
+        help="remove old .caps files from dir"
+    )
+
     parser.add_argument("--devices_csv", "--csv", "--c", "-c",
         default=def_devices_csv,
         help=".csv file path listing the browserstack devices, from which we'll create .cap files"

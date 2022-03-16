@@ -3,19 +3,40 @@ simple utility that generate a bunch of .cap files for use in automate.browserst
 
 :see:
   https://www.browserstack.com/automate/capabilities
-  https://www.browserstack.com/list-of-browsers-and-platforms/js_testing
   https://www.browserstack.com/docs/automate/selenium/selenium-ide
+  https://www.browserstack.com/list-of-browsers-and-platforms/js_testing
 
 :note - to deleting tests from BS via the command line:
   curl -u "<uname:pass>" https://api.browserstack.com/automate/builds.json (then take 'hashed_id' from that output for below)
   curl -u "<uname:pass>" -X DELETE https://api.browserstack.com/automate/builds/<hashed_id>.json
 """
 import os
+import glob
 from datetime import datetime
 
 import cmd_line
 import device_reader
 
+
+def is_desktop(rec):
+    return rec['device'] in ["win", "mac"]
+
+
+"""
+
+capabilities:
+     os: 'OS X'
+     os_version: 'high sierra'
+     browserName: 'firefox'
+     browser_version: '63.0'
+     real_mobile: true
+     name: 'macFF63'
+     build: 'gen ran 2022.03.15_21.13'
+     browserstack.debug: true
+     browserstack.console: 'verbose'
+     browserstack.networkLogs: true
+ server: "https://purcellf_bVymNM:a3T9Xs5DiiW2zcj7cNJc@hub-cloud.browserstack.com/wd/hub"
+ """
 
 def write_cap_file(rec, key, name, path, orientation="vertical"):
     """
@@ -24,24 +45,41 @@ def write_cap_file(rec, key, name, path, orientation="vertical"):
           so if things don't run or are behaving correctly, the template below could easily be the problem
     """
     build = "gen ran {:%Y.%m.%d_%H.%M}".format(datetime.now())
-    template = """ capabilities:
-     device: "{device}"
-     orientation: "{orientation}"
-     os: "{os}"
-     os_version: '{osVersion}'
-     browserName: "{browser}"
-     browser_version: '{browserVersion}'
-     real_mobile: true
-     name: '{dname}'
-     build: '{build}'
-     browserstack.debug: true
-     browserstack.console: "verbose"
-     browserstack.networkLogs: true
- server: "https://{browserstack_key}@hub-cloud.browserstack.com/wd/hub"
- """
+    temp_body = """
+    os: '{os}'
+    os_version: '{osVersion}'
+    browserName: '{browser}'
+    browser_version: '{browserVersion}'
+    resolution: '{resolution}'
+    real_mobile: true
+    name: '{dname}'
+    build: '{build}'
+    browserstack.debug: true
+    browserstack.console: 'verbose'
+    browserstack.networkLogs: true
+server: "https://{browserstack_key}@hub-cloud.browserstack.com/wd/hub"
+"""
+    if is_desktop(rec):
+        template = """capabilities: """ + temp_body
+        resolution = '1280x1024'
+    else:
+        template = """capabilities: 
+    orientation: "{orientation}"
+    device: "{device}" """ + temp_body
+        resolution = '1134 x 750'
+
     filename = os.path.join(path, name + ".cap")
     with open(filename, 'w') as f:
-        f.write(template.format(build=build, browserstack_key=key, dname=name, orientation=orientation, **rec))
+        f.write(template.format(build=build, browserstack_key=key, dname=name, resolution=resolution, orientation=orientation, **rec))
+
+
+def rm_cap_files(dir):
+    files = glob.glob(dir + '/*.cap')
+    for f in files:
+        try:
+            os.remove(f)
+        except OSError as e:
+            print("Error: %s : %s" % (f, e.strerror))
 
 
 def print_urls(rec, url="https%3A%2F%2Ftrimet.org%2Fhome"):
@@ -54,16 +92,19 @@ def process(recs, args):
     """
     add element(s) to our device array
     """
+    path = args.caps_dir
+    if args.rm_caps and path:
+        rm_cap_files(path)
+
     for i, r in enumerate(recs):
         if args.number < i: break
         if args.urls: 
             print_urls(r)
         else:
             name = r['name']
-            path = args.caps_dir
             key = args.browserstack_key
             write_cap_file(r, key, name, path)
-            if args.landscape:
+            if not is_desktop(r) and args.landscape:
                 name = "{}Land".format(name)
                 write_cap_file(r, key, name, path, "landscape")
 
