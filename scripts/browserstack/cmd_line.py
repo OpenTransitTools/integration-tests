@@ -32,6 +32,11 @@ def make_parser(prog_name='scripts/browserstack/gen.py', do_parse=True):
         action="store_true"        
     )
 
+    parser.add_argument("--baseline", "--b", "-b",
+        help="print browserstack URL to these devices",
+        action="store_true"        
+    )
+
     parser.add_argument("--caps_dir", "--dir", "--d", "-d",
         default=def_caps_dir,
         help="directory to store the generated .caps files"
@@ -42,7 +47,17 @@ def make_parser(prog_name='scripts/browserstack/gen.py', do_parse=True):
         help=".csv file path listing the browserstack devices, from which we'll create .cap files"
     )
 
-    parser.add_argument("-browserstack_key", "--key", "--k", "-k",
+    parser.add_argument("--os_filter", "--of", "-of", "-o",
+        nargs="*",
+        help="OS filter [iOS, OS-X, andriod, windows]"
+    )
+
+    parser.add_argument("--browser_filter", "--bf", "-bf",
+        nargs="*",
+        help="BROWSER filter [firefox, chrome, safari, opera]"
+    )
+
+    parser.add_argument("--browserstack_key", "--key", "--k", "-k",
         required=True,
         help="provide the uname:password 'ACCESS KEY' from BrowserStack's automate (see README.md)"
     )

@@ -10,13 +10,14 @@ simple utility that generate a bunch of .cap files for use in automate.browserst
   curl -u "<uname:pass>" https://api.browserstack.com/automate/builds.json (then take 'hashed_id' from that output for below)
   curl -u "<uname:pass>" -X DELETE https://api.browserstack.com/automate/builds/<hashed_id>.json
 """
+import os
 from datetime import datetime
 
 import cmd_line
 import device_reader
 
 
-def write_cap_file(rec, filename, bs_key):
+def write_cap_file(rec, key, name, path, orientation="verticle"):
     """
     .format() template to generate a .cap file for browserstack automate
     NOTE: selenium is very sensitive to this format ... an extra space will make the test runner fail
@@ -31,15 +32,16 @@ def write_cap_file(rec, filename, bs_key):
      browserName: "{browser}"
      browser_version: '{browserVersion}'
      real_mobile: true
-     name: '{name}'
+     name: '{dname}'
      build: '{build}'
      browserstack.debug: true
      browserstack.console: "verbose"
      browserstack.networkLogs: true
- server: "https://{key}@hub-cloud.browserstack.com/wd/hub"
+ server: "https://{browserstack_key}@hub-cloud.browserstack.com/wd/hub"
  """
+    filename = os.path.join(path, name + ".cap")
     with open(filename, 'w') as f:
-        f.write(template.format(key=bs_key, build=build, **rec))
+        f.write(template.format(build=build, browserstack_key=key, dname=name, orientation=orientation, **rec))
 
 
 def print_urls(rec, url="https%3A%2F%2Ftrimet.org%2Fhome"):
@@ -65,12 +67,21 @@ def process(recs, args):
     """
     for i, r in enumerate(recs):
         if args.number < i: break
-        if args.urls: print_urls(r)
+        if args.urls: 
+            print_urls(r)
+        else:
+            name = r['name']
+            path = args.caps_dir
+            key = args.browserstack_key
+            write_cap_file(r, key, name, path)
+            if args.landscape:
+                name = "{}Land".format(name)
+                write_cap_file(r, key, name, path, "landscape")
 
 
 def main():
     args = cmd_line.make_parser()
-    recs = device_reader.parse_csv(args.devices_csv)
+    recs = device_reader.parse_csv_args(args)
     process(recs, args)
 
 
