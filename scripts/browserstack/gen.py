@@ -2,9 +2,17 @@
 simple utility that generate a bunch of .cap files for use in automate.browserstack.com
 
 :see:
+  # important tool - build caps file 
   https://www.browserstack.com/automate/capabilities
-  https://www.browserstack.com/docs/automate/selenium/selenium-ide
+
+  # generic list of browsers that run
   https://www.browserstack.com/list-of-browsers-and-platforms/js_testing
+
+  # instructions
+  https://www.browserstack.com/docs/automate/selenium/selenium-ide
+
+  # for when you mistakenly check in your key :-(
+  https://www.browserstack.com/docs/automate/selenium/reset-access-key#using-command-prompt 
 
 :note - to deleting tests from BS via the command line:
   curl -u "<uname:pass>" https://api.browserstack.com/automate/builds.json (then take 'hashed_id' from that output for below)
@@ -18,17 +26,19 @@ import cmd_line
 import device_reader
 
 
+build_time = "gen ran {:%Y.%m.%d_%H.%M}".format(datetime.now())
+
+
 def is_desktop(rec):
     return rec['device'] in ["win", "mac"]
 
 
-def write_cap_file(rec, key, name, path, orientation="vertical"):
+def gen_caps(rec, key, name, orientation):
     """
     .format() template to generate a .cap file for browserstack automate
     NOTE: selenium is very sensitive to this format ... an extra space will make the test runner fail
           so if things don't run or are behaving correctly, the template below could easily be the problem
     """
-    build = "gen ran {:%Y.%m.%d_%H.%M}".format(datetime.now())
     temp_body = """
     os: '{os}'
     os_version: '{osVersion}'
@@ -37,24 +47,31 @@ def write_cap_file(rec, key, name, path, orientation="vertical"):
     resolution: '{resolution}'
     real_mobile: true
     name: '{dname}'
-    build: '{build}'
+    build: '{build_time}'
     browserstack.debug: true
     browserstack.console: 'verbose'
     browserstack.networkLogs: true
 server: "https://{browserstack_key}@hub-cloud.browserstack.com/wd/hub"
 """
     if is_desktop(rec):
-        template = """capabilities: """ + temp_body
         resolution = '1280x1024'
+        template = """capabilities: """ + temp_body
     else:
+        resolution = '1134 x 750'
         template = """capabilities: 
     orientation: "{orientation}"
     device: "{device}" """ + temp_body
-        resolution = '1134 x 750'
+    # realMobile: 'true'
 
+    ret_val = template.format(build_time=build_time, browserstack_key=key, dname=name, resolution=resolution, orientation=orientation, **rec)
+    return ret_val
+
+
+def write_cap_file(rec, key, name, path, orientation="vertical"):
+    caps = gen_caps(rec, key, name, orientation)
     filename = os.path.join(path, name + ".cap")
     with open(filename, 'w') as f:
-        f.write(template.format(build=build, browserstack_key=key, dname=name, resolution=resolution, orientation=orientation, **rec))
+        f.write(caps)
 
 
 def rm_cap_files(dir):

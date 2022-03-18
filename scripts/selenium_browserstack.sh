@@ -13,7 +13,7 @@ PARALLEL_PROCESSES=10
 for t in $CAPS_FILES; do
     echo $t
     # --filter smoke or --filter <regex>
-    sel="$SELENIUM_CMD -w $PARALLEL_PROCESSES --base-url $TEST_URL --config-file $t $SIDES_DIR/*.side"
+    sel="$SELENIUM_CMD --timeout 30000 -w $PARALLEL_PROCESSES --base-url $TEST_URL --config-file $t $SIDES_DIR/*.side"
     echo $sel
     eval $sel
 done
