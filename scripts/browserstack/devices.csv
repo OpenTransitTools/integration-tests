@@ -11,7 +11,7 @@ winEdge,win,Windows,11,edge,latest,false,newest Windows and Edge - March 2022
 # mac
 macSafari12,mac,OS X,Mojave,safari,12.1,true,oldest working Safari on Mac browser - March 2022 (sierra on BS has older non working Safari)
 macFF63,mac,OS X,High Sierra,firefox,63.0,true,oldest working FF on Mac browser - March 2022
-macChrome63,mac,OS X,Sierra,chrome,73.0,true,oldest working Chrome on Mac browser - March 2022
+macChrome73,mac,OS X,Sierra,chrome,73.0,true,oldest working Chrome on Mac browser - March 2022
 macEdge80,mac,OS X,Big Sur,edge,80,true,oldest working Edge on Mac browser - March 2022
 
 macSafari,mac,OS X,Monterey,safari,latest,false,newest OS X and Safari - March 2022
