@@ -19,9 +19,9 @@ macFF,mac,OS X,Monterey,firefox,latest,false,newest OS X and FF - March 2022
 macChrome,mac,OS X,Monterey,chrome,latest,false,newest OS X and Chrome - March 2022
 macEdge,mac,OS X,Monterey,edge,latest,false,newest OS X and Edge - March 2022
 
-# desktop notes
-opera browser is on BrowserStack, not available in Automate; so have to run by hand w/Live - Opera version 60 the baseline
-IE 11 is the latest available browser on Win 10 -- the app doesn't work on that browser as of March 2022
+### desktop notes ###
+# opera browser is on BrowserStack, not available in Automate; so have to run by hand w/Live - Opera version 60 the baseline
+# IE 11 is the latest available browser on Win 10 -- the app doesn't work on that browser as of March 2022
 
 # iPhones
 iPhoneSafari7,iPhone 7,iOS,12.3,safari,latest,true,baseline iOS 12.3 + Safari 12 (other BS iOS 12s are non functioning 12.1)
