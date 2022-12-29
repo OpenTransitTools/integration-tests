@@ -8,7 +8,7 @@ DIR=`dirname $0`
 . $DIR/base.sh
 
 CAPS_FILES="$DIR/browserstack/caps/*cap"
-PARALLEL_PROCESSES=10
+PARALLEL_PROCESSES=5
 
 for t in $CAPS_FILES; do
     echo $t

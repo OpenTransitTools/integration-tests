@@ -27,6 +27,13 @@
           "target": "ES-Plan and track your trip on TriMet",
           "targets": [],
           "value": ""
+        }, {
+          "id": "6ed618d9-9843-455e-aaa1-aaaaaaaaaa4",
+          "comment": "check for leaflet RT vehicle marker icon",
+          "command": "verifyElementPresent",
+          "target": "xpath=//div[@class='leaflet-marker-icon leaflet-zoom-animated leaflet-interactive']",
+          "targets": [],
+          "value": ""
         }]
     },
     {
@@ -51,6 +58,13 @@
           "comment": "",
           "command": "verifyTitle",
           "target": "MAX Blue Line | TriMet",
+          "targets": [],
+          "value": ""
+        }, {
+          "id": "6ed618d9-9843-455e-aaa2-aaaaaaaaaa4",
+          "comment": "",
+          "command": "verifyElementPresent",
+          "target": "xpath=//button[@data-gtm='route-direction-button-0']",
           "targets": [],
           "value": ""
         }]
@@ -79,7 +93,15 @@
           "target": "Your trip on TriMet | TriMet",
           "targets": [],
           "value": ""
+        }, {
+          "id": "6ed618d9-9843-455e-aaa3-aaaaaaaaaa4",
+          "comment": "make sure we have at least one itinerary button",
+          "command": "verifyElementPresent",
+          "target": "xpath=//button[@data-gtm='itinerary-trip-option-tab-1']",
+          "targets": [],
+          "value": ""
         }]
+
     }
   ],
   "suites": [{
