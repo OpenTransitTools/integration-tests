@@ -47,6 +47,11 @@ def make_parser(prog_name='scripts/browserstack/gen.py', do_parse=True):
         help="remove old .caps files from dir"
     )
 
+    parser.add_argument("--no_info_file", "--nif", "-nif",
+        action="store_true",
+        help="*do not* generate a description / info .txt file alongside the .cap files"
+    )
+
     parser.add_argument("--devices_csv", "--csv", "--c", "-c",
         default=def_devices_csv,
         help=".csv file path listing the browserstack devices, from which we'll create .cap files"
@@ -64,7 +69,7 @@ def make_parser(prog_name='scripts/browserstack/gen.py', do_parse=True):
 
     parser.add_argument("--browserstack_key", "--key", "--k", "-k",
         required=True,
-        help="provide the uname:password 'ACCESS KEY' from BrowserStack's automate (see README.md)"
+        help="provide a BrowserStack automate <uname:password> 'ACCESS KEY' (see README.md)"
     )
 
     ret_val = parser.parse_args() if do_parse else parser

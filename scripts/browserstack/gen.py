@@ -67,11 +67,20 @@ server: "https://{browserstack_key}@hub-cloud.browserstack.com/wd/hub"
     return ret_val
 
 
-def write_cap_file(rec, key, name, path, orientation="vertical"):
+def write_cap_file(rec, key, name, path, orientation="vertical", do_info_file=True):
     caps = gen_caps(rec, key, name, orientation)
     filename = os.path.join(path, name + ".cap")
     with open(filename, 'w') as f:
         f.write(caps)
+    if do_info_file:
+        filename = os.path.join(path, name + ".txt")
+        with open(filename, 'w') as f:
+            f.write("  ")
+            f.write(get_info(rec, orientation))
+            f.write("\n\n  ")
+            f.write(get_url(rec))
+            f.write("\n")
+
 
 
 def rm_cap_files(dir):
@@ -83,10 +92,20 @@ def rm_cap_files(dir):
             print("Error: %s : %s" % (f, e.strerror))
 
 
-def print_urls(rec, url="https%3A%2F%2Ftrimet.org%2Fhome"):
+def get_url(rec, url="https%3A%2F%2Ftrimet.org%2Fhome"):
     #https://live.browserstack.com/dashboard#os=android&os_version=9.0&device=Samsung+Galaxy+A10&device_browser=chrome&zoom_to_fit=true&full_screen=true&url=https%3A%2F%2Ftrimet.org%2Fhome%2Fsearch&speed=1
+    #https://live.browserstack.com/dashboard#os=iOS&os_version=13.6&device=iPad+Air+2019&device_browser=chrome&zoom_to_fit=true&full_screen=true&url=https%3A%2F%2Ftrimet.org%2Fhome&speed=1
     template = "https://live.browserstack.com/dashboard#device={device}&os={os}&os_version={osVersion}&browser={browser}&browser_version={browserVersion}&device_browser={browser}&url={url}&zoom_to_fit=true&full_screen=true&resolution=responsive-mode&speed=1"
-    print(template.format(url=url, **rec))
+    return template.format(url=url, **rec)
+
+
+def get_info(rec, landscape=""):
+    template = "{device} ({os} {osVersion}) using {browser} ({browserVersion} {landscape})"
+    return template.format(landscape=landscape, **rec)
+
+
+def print_url(rec):
+    print(get_url(rec))
 
 
 def process(recs, args):
@@ -100,11 +119,11 @@ def process(recs, args):
     for i, r in enumerate(recs):
         if args.number < i: break
         if args.urls: 
-            print_urls(r)
+            print_url(r)
         else:
             name = r['name']
             key = args.browserstack_key
-            write_cap_file(r, key, name, path)
+            write_cap_file(r, key, name, path, do_info_file=not args.no_info_file)
             if not is_desktop(r) and args.landscape:
                 name = "{}Land".format(name)
                 write_cap_file(r, key, name, path, "landscape")
