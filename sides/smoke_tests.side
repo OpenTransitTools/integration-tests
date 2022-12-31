@@ -10,21 +10,21 @@
           "id": "ed026ec8-e7be-40cc-aaa1-aaaaaaaaaa1",
           "comment": "",
           "command": "open",
-          "target": "/home/es/",
+          "target": "/home/",
           "targets": [],
           "value": ""
         }, {
           "id": "1811e702-259c-4899-aaa1-aaaaaaaaaa2",
           "comment": "",
           "command": "pause",
-          "target": "3300",
+          "target": "5000",
           "targets": [],
           "value": ""
         }, {
           "id": "6ed618d9-9843-455e-aaa1-aaaaaaaaaa3",
           "comment": "",
           "command": "verifyTitle",
-          "target": "ES-Plan and track your trip on TriMet",
+          "target": "Plan and track your trip on TriMet",
           "targets": [],
           "value": ""
         }, {
@@ -50,7 +50,7 @@
           "id": "1811e702-259c-4899-aaa2-aaaaaaaaaa2",
           "comment": "",
           "command": "pause",
-          "target": "3300",
+          "target": "5000",
           "targets": [],
           "value": ""
         }, {
@@ -83,7 +83,7 @@
           "id": "1811e702-259c-4899-aaa3-aaaaaaaaaa2",
           "comment": "",
           "command": "pause",
-          "target": "3300",
+          "target": "5000",
           "targets": [],
           "value": ""
         }, {

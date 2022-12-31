@@ -12,11 +12,11 @@ PARALLEL_PROCESSES=5
 
 for t in $CAPS_FILES; do
     echo
-    echo $t
-    cat ${t%.cap}.txt 2> /dev/null
-    echo
+    echo $t ::
     sel="$SELENIUM_CMD --timeout 30000 -w $PARALLEL_PROCESSES --base-url $TEST_URL --config-file $t $SIDES_DIR/*.side"
-    echo "  $sel"
     eval $sel
+    echo "  $sel"
+    echo
+    cat ${t%.cap}.txt 2> /dev/null
     echo
 done
