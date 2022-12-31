@@ -93,9 +93,8 @@ def rm_files(dir):
 
 
 def get_url(rec, url="https%3A%2F%2Ftrimet.org%2Fhome"):
-    #https://live.browserstack.com/dashboard#os=android&os_version=9.0&device=Samsung+Galaxy+A10&device_browser=chrome&zoom_to_fit=true&full_screen=true&url=https%3A%2F%2Ftrimet.org%2Fhome%2Fsearch&speed=1
-    #https://live.browserstack.com/dashboard#os=iOS&os_version=13.6&device=iPad+Air+2019&device_browser=chrome&zoom_to_fit=true&full_screen=true&url=https%3A%2F%2Ftrimet.org%2Fhome&speed=1
-    template = "https://live.browserstack.com/dashboard#device={device}&os={os}&os_version={osVersion}&browser={browser}&browser_version={browserVersion}&device_browser={browser}&url={url}&zoom_to_fit=true&full_screen=true&resolution=responsive-mode&speed=1"
+    # https://live.browserstack.com/dashboard#os=android&os_version=10.0&device=Motorola+Moto+G9+Play&device_browser=firefox&zoom_to_fit=true&full_screen=true&url=https%3A%2F%2Flabs.trimet.org%2Fhome%2F&speed=1
+    template = "https://live.browserstack.com/dashboard#os={os}&os_version={osVersion}&device={device}&device_browser={browser}&browser_version={browserVersion}&zoom_to_fit=true&full_screen=true&url={url}&speed=1"
     return template.format(url=url, **rec)
 
 
