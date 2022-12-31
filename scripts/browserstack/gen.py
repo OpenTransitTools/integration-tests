@@ -83,8 +83,8 @@ def write_cap_file(rec, key, name, path, orientation="vertical", do_info_file=Tr
 
 
 
-def rm_cap_files(dir):
-    files = glob.glob(dir + '/*.cap')
+def rm_files(dir):
+    files = glob.glob(dir + '/*.???')
     for f in files:
         try:
             os.remove(f)
@@ -114,7 +114,7 @@ def process(recs, args):
     """
     path = args.caps_dir
     if args.rm_caps and path:
-        rm_cap_files(path)
+        rm_files(path)
 
     for i, r in enumerate(recs):
         if args.number < i: break

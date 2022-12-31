@@ -24,7 +24,13 @@ def make_parser(prog_name='scripts/browserstack/gen.py', do_parse=True):
 
     parser.add_argument("--number", "--num", "--n", "-n",
         default=111111111,
+        type=int,
         help="limit the number of cap files (or urls) to this number"
+    )
+
+    parser.add_argument("--baseline", "--b", "-b",
+        help="limit the .caps to only baseline browsers",
+        action="store_true"        
     )
 
     parser.add_argument("--urls", "--u", "-u",
