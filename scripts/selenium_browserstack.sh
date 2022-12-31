@@ -11,9 +11,12 @@ CAPS_FILES="$DIR/browserstack/caps/*cap"
 PARALLEL_PROCESSES=5
 
 for t in $CAPS_FILES; do
+    echo
     echo $t
-    # --filter smoke or --filter <regex>
+    cat ${t%.cap}.txt 2> /dev/null
+    echo
     sel="$SELENIUM_CMD --timeout 30000 -w $PARALLEL_PROCESSES --base-url $TEST_URL --config-file $t $SIDES_DIR/*.side"
-    echo $sel
+    echo "  $sel"
     eval $sel
+    echo
 done

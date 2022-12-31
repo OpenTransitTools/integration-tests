@@ -32,11 +32,6 @@ def make_parser(prog_name='scripts/browserstack/gen.py', do_parse=True):
         action="store_true"        
     )
 
-    parser.add_argument("--baseline", "--b", "-b",
-        help="print browserstack URL to these devices",
-        action="store_true"        
-    )
-
     parser.add_argument("--caps_dir", "--dir", "--d", "-d",
         default=def_caps_dir,
         help="directory to store the generated .caps files"
