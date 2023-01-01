@@ -1,6 +1,7 @@
 DIR=`dirname $0`
 SEP=${SEP:=":"}
 EXE=${EXE:=""}
+RUN_TESTS=${1:-"YES"}
 
 # set path to node_mod's install of drivers and selenium
 P=".$SEP$DIR$SEP$PWD/node_modules/.bin$SEP$DIR/../node_modules/.bin"
@@ -13,7 +14,9 @@ for d in chromedriver geckodriver edgedriver msedgedriver; do
     P="$P$SEP$DR$SEP$DIR/../node_modules/$d/bin"
 done
 export PATH="./scripts$SEP$P$SEP$PATH"
-echo "export PATH=\"$PATH\""
+if [ $RUN_TESTS != "NO" ]; then
+  echo "export PATH=\"$PATH\""
+fi
 
 # set selenium-side-runner default params
 TEST_URL=${TEST_URL:="https://labs.trimet.org"}   # note: export TEST_URL="http://localhost:8000" for testing locally

@@ -14,8 +14,11 @@ for t in $CAPS_FILES; do
     echo
     echo $t ::
     sel="$SELENIUM_CMD --timeout 30000 -w $PARALLEL_PROCESSES --base-url $TEST_URL --config-file $t $SIDES_DIR/*.side"
-    eval $sel
-    echo "  $sel"
+    if [ $RUN_TESTS != "NO" ]; then
+      echo "  $sel"
+      eval $sel
+      echo
+    fi
     echo
     cat ${t%.cap}.txt 2> /dev/null
     echo

@@ -1,4 +1,8 @@
 name,device,os,osVersion,browser,browserVersion,baseline,notes
+
+# NOTE: to get a list of BrowserStack automate browsers:
+# curl -u "uname_blah:browserstack_key" https://api.browserstack.com/automate/browsers.json
+
 # windows
 winFF63,win,Windows,10,firefox,63.0,true,oldest working FF on Win browser - March 2022 (FF 62 no run)
 winChrome73,win,Windows,10,chrome,73.0,true,oldest working Chrome on Win browser - March 2022 (Chrome 62 no run)
@@ -38,16 +42,24 @@ iPadAirChrome,iPad Air 2019,iOS,12.2,chrome,latest,true,this is iOS 12.2 + Chrom
 iPadProChrome,iPad Pro 12.9 2021,iOS,14.0,chrome,latest,false,newer iPad
 iPadProSafari,iPad 9th,iOS,15.0,chrome,latest,false,newest iPad
 
-# andriod phones
-androidPixel,Google Pixel,andriod,7.1,firefox,latest-1,true,old google phone with FF
-androidGalaxyS20,Samsung Galaxy S20 Plus,andriod,10.0,samsung,latest-1,true,funky phone browser
-androidGalaxyTabS7,Samsung Galaxy Tab S7,andriod,10.0,chrome,latest-1,true,this is chrome 80 on tablet
+# android phones
+androidPixel,Google Pixel,android,7.1,firefox,latest-1,true,old google phone with FF
+androidGoogleFirefox,Google Pixel 6 Pro,android,12.0,firefox,latest,false,newest android Google FF - March 2022
+androidGoogleChrome,Google Pixel 6 Pro,android,12.0,chrome,latest,false,newest android Google Chrome - March 2022
 
-androidSamsungFirefox,Samsung Galaxy S22 Ultra,andriod,12.0,firefox,latest,false,newest android Samsung FF - March 2022
-andriodSamsungChrome,Samsung Galaxy S22 Ultra,andriod,12.0,chrome,latest,false,newest android Samsung Chrome - March 2022
-androidGoogleFirefox,Google Pixel 6 Pro,andriod,12.0,firefox,latest,false,newest android Google FF - March 2022
-andriodGoogleChrome,Google Pixel 6 Pro,andriod,12.0,chrome,latest,false,newest android Google Chrome - March 2022
-androidMotoFirefox,Motorola Moto G9 Play,andriod,10.0,firefox,latest,false,newest android Moto FF - March 2022
-andriodMotoChrome,Motorola Moto G9 Play,andriod,10.0,chrome,latest,false,newest android Moto Chrome - March 2022
-androidOneFirefox,OnePlus 9,andriod,11.0,firefox,latest,false,newest android One FF - March 2022
-andriodOneChrome,OnePlus 9,andriod,11.0,chrome,latest,false,newest android One Chrome - March 2022
+androidGalaxyS20,Samsung Galaxy S20 Plus,android,10.0,samsung,latest-1,true,funky phone browser
+androidGalaxyTabS7,Samsung Galaxy Tab S7,android,10.0,chrome,latest-1,true,this is chrome 80 on tablet
+androidSamsungFirefox,Samsung Galaxy S22 Ultra,android,12.0,firefox,latest,false,newest android Samsung FF - March 2022
+androidSamsungChrome,Samsung Galaxy S22 Ultra,android,12.0,chrome,latest,false,newest android Samsung Chrome - March 2022
+
+androidMotoG71Firefox,Motorola Moto G71 5G,android,11.0,firefox,latest,false,newest android Moto G17 FF - March 2022
+androidMotoG71Chrome,Motorola Moto G71 5G,android,11.0,chrome,latest,false,newest android Moto G17 Chrome - March 2022
+androidMoto9Firefox,Motorola Moto G9 Play,android,10.0,firefox,latest,false,newest android Moto G9 FF - March 2022
+androidMoto9Chrome,Motorola Moto G9 Play,android,10.0,chrome,latest,false,newest android Moto G9 Chrome - March 2022
+androidMoto7Firefox,Motorola Moto G7 Play,android,9.0,firefox,latest,false,older android Moto G7 FF - March 2022
+androidMoto7Chrome,Motorola Moto G7 Play,android,9.0,chrome,latest,false,older android Moto G7 Chrome - March 2022
+androidMoto5Firefox,Motorola Moto X 2nd Gen,android,5.0,firefox,latest,false,very old android Moto G FF - March 2022
+androidMoto5Chrome,Motorola Moto X 2nd Gen,android,5.0,chrome,latest,false,very old android Moto G Chrome - March 2022
+
+androidOneFirefox,OnePlus 9,android,11.0,firefox,latest,false,newest android One FF - March 2022
+androidOneChrome,OnePlus 9,android,11.0,chrome,latest,false,newest android One Chrome - March 2022
